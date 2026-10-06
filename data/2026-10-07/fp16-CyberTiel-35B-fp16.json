@@ -1,0 +1,55 @@
+{
+ "src": "CyberTiel-Coder-35B-MLX",
+ "cast_dtypes": [
+  "BF16"
+ ],
+ "tensors_cast": 1569,
+ "max_abs": 25.375,
+ "underflow_nonzero_to_zero": 26103,
+ "cloned": [
+  "LICENSE",
+  "README-upstream.md",
+  "README.md",
+  "chat_template.jinja",
+  "config.json",
+  "generation_config.json",
+  "merges.txt",
+  "model.safetensors.index.json",
+  "oq_imatrix_report.json",
+  "preprocessor_config.json",
+  "processor_config.json",
+  "tokenizer.json",
+  "tokenizer_config.json",
+  "vocab.json"
+ ],
+ "rewritten": [
+  [
+   "model-00001-of-00006.safetensors",
+   1314
+  ],
+  [
+   "model-00002-of-00006.safetensors",
+   46
+  ],
+  [
+   "model-00003-of-00006.safetensors",
+   46
+  ],
+  [
+   "model-00004-of-00006.safetensors",
+   46
+  ],
+  [
+   "model-00005-of-00006.safetensors",
+   46
+  ],
+  [
+   "model-00006-of-00006.safetensors",
+   40
+  ],
+  [
+   "model-mtp.safetensors",
+   31
+  ]
+ ]
+}

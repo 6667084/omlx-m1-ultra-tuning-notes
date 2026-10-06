@@ -1,0 +1,5 @@
+{"label": "cyber_fp16_prod", "per_prompt_median": {"zh_explain": 90.1, "code": 116.0, "reason": 124.7}, "overall_median": 116.0, "cv_pct": 13.0, "mtp_tok_per_cycle_median": 2.99, "mtp_accept_median": 81.0}
+{"label": "chat_abba_A1", "per_prompt_median": {"zh_explain": 91.0, "code": 103.9, "reason": 102.5}, "overall_median": 102.5, "cv_pct": 7.2, "mtp_tok_per_cycle_median": 2.56, "mtp_accept_median": 78.6}
+{"label": "chat_abba_B1", "per_prompt_median": {"zh_explain": 91.5, "code": 109.1, "reason": 118.8}, "overall_median": 109.1, "cv_pct": 11.6, "mtp_tok_per_cycle_median": 2.69, "mtp_accept_median": 79.2}
+{"label": "chat_abba_B2", "per_prompt_median": {"zh_explain": 95.1, "code": 113.2, "reason": 116.1}, "overall_median": 112.3, "cv_pct": 8.9, "mtp_tok_per_cycle_median": 2.89, "mtp_accept_median": 79.5}
+{"label": "chat_abba_A2", "per_prompt_median": {"zh_explain": 90.3, "code": 110.6, "reason": 112.4}, "overall_median": 108.7, "cv_pct": 8.9, "mtp_tok_per_cycle_median": 2.6, "mtp_accept_median": 84.1}

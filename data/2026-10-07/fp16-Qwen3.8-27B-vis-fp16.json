@@ -1,0 +1,35 @@
+{
+ "src": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX",
+ "cast_dtypes": [
+  "BF16"
+ ],
+ "tensors_cast": 333,
+ "max_abs": 25.5,
+ "underflow_nonzero_to_zero": 22361,
+ "cloned": [
+  "MTPLX_FP16_CONVERSION_MANIFEST.json",
+  "README-upstream.md",
+  "README.md",
+  "chat_template.jinja",
+  "config.json",
+  "generation_config.json",
+  "model-00001-of-00004.safetensors",
+  "model-00002-of-00004.safetensors",
+  "model-00003-of-00004.safetensors",
+  "model-00004-of-00004.safetensors",
+  "model-mtp.safetensors",
+  "model.safetensors.index.json",
+  "mtplx_runtime.json",
+  "preprocessor_config.json",
+  "processor_config.json",
+  "tokenizer.json",
+  "tokenizer_config.json",
+  "video_preprocessor_config.json"
+ ],
+ "rewritten": [
+  [
+   "model-vision.safetensors",
+   333
+  ]
+ ]
+}

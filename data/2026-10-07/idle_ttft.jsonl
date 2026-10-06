@@ -1,0 +1,2 @@
+{"alias": "CyberTiel-35B", "idle_0.3s_ttft_median": 0.41, "idle_1.0s_ttft_median": 0.485, "idle_2.5s_ttft_median": 0.47, "idle_5.0s_ttft_median": 0.485, "idle_15.0s_ttft_median": 0.52}
+{"alias": "CyberTiel-35B", "idle_0.3s_ttft_median": 0.38, "idle_1.0s_ttft_median": 0.39, "idle_2.5s_ttft_median": 0.43, "idle_5.0s_ttft_median": 0.4, "idle_15.0s_ttft_median": 0.44}

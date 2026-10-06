@@ -1,0 +1,4 @@
+{"label": "cyber_bf16", "total": "206/260", "mmlu": "29/50", "cmmlu": "38/50", "truthfulqa": "47/50", "gsm8k": "49/50", "humaneval": "16/20", "mbpp": "22/30", "livecodebench": "5/10", "truncated": 1, "errors": 0}
+{"label": "cyber_fp16", "total": "206/260", "mmlu": "31/50", "cmmlu": "38/50", "truthfulqa": "46/50", "gsm8k": "49/50", "humaneval": "15/20", "mbpp": "24/30", "livecodebench": "3/10", "truncated": 1, "errors": 0}
+{"label": "cyber_fp16_r2", "total": "206/260", "mmlu": "31/50", "cmmlu": "38/50", "truthfulqa": "46/50", "gsm8k": "49/50", "humaneval": "15/20", "mbpp": "24/30", "livecodebench": "3/10", "truncated": 1, "errors": 0}
+{"label": "cyber_bf16_r2", "total": "206/260", "mmlu": "29/50", "cmmlu": "38/50", "truthfulqa": "47/50", "gsm8k": "49/50", "humaneval": "16/20", "mbpp": "24/30", "livecodebench": "3/10", "truncated": 1, "errors": 0}

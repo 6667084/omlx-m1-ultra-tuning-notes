@@ -1,0 +1,25 @@
+{
+ "src": "bge-reranker-v2-m3",
+ "cast_dtypes": [
+  "BF16",
+  "F32"
+ ],
+ "tensors_cast": 393,
+ "max_abs": 1.859375,
+ "underflow_nonzero_to_zero": 0,
+ "cloned": [
+  "README-upstream.md",
+  "README.md",
+  "config.json",
+  "sentencepiece.bpe.model",
+  "special_tokens_map.json",
+  "tokenizer.json",
+  "tokenizer_config.json"
+ ],
+ "rewritten": [
+  [
+   "model.safetensors",
+   393
+  ]
+ ]
+}

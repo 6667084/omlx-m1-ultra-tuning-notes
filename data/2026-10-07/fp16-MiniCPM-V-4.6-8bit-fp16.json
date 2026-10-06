@@ -1,0 +1,29 @@
+{
+ "src": "MiniCPM-V-4.6-8bit",
+ "cast_dtypes": [
+  "BF16"
+ ],
+ "tensors_cast": 875,
+ "max_abs": 55.5,
+ "underflow_nonzero_to_zero": 37240,
+ "cloned": [
+  "README-upstream.md",
+  "README.md",
+  "chat_template.jinja",
+  "config.json",
+  "config.json.bak-before-4x",
+  "generation_config.json",
+  "model.safetensors.index.json",
+  "preprocessor_config.json",
+  "processor_config.json",
+  "processor_config.json.bak-before-4x",
+  "tokenizer.json",
+  "tokenizer_config.json"
+ ],
+ "rewritten": [
+  [
+   "model.safetensors",
+   875
+  ]
+ ]
+}

@@ -1,0 +1,4 @@
+{"label": "q4e_fix3_builtin", "status": "completed", "1024": {"pp": 1024, "tg": 128, "ttft_ms": 3740.3, "gen_tps": 42.2, "processing_tps": 273.8}, "4096": {"pp": 4096, "tg": 128, "ttft_ms": 14055.3, "gen_tps": 43.0, "processing_tps": 291.4}}
+{"label": "qwen_fix2_builtin", "status": "completed", "1024": {"pp": 1024, "tg": 128, "ttft_ms": 3685.3, "gen_tps": 46.8, "processing_tps": 277.9}, "4096": {"pp": 4096, "tg": 128, "ttft_ms": 14301.2, "gen_tps": 41.7, "processing_tps": 286.4}}
+{"label": "qwen_fix2_long", "status": "completed", "4096": {"pp": 4096, "tg": 128, "ttft_ms": 14358.0, "gen_tps": 42.0, "processing_tps": 285.3}, "16384": {"pp": 16384, "tg": 128, "ttft_ms": 61001.2, "gen_tps": 44.2, "processing_tps": 268.6}}
+{"label": "qwen_adapt_long", "status": "completed", "4096": {"pp": 4096, "tg": 128, "ttft_ms": 14279.2, "gen_tps": 39.9, "processing_tps": 286.9}, "16384": {"pp": 16384, "tg": 128, "ttft_ms": 59880.7, "gen_tps": 43.0, "processing_tps": 273.6}}
