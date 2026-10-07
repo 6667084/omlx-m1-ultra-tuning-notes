@@ -7,8 +7,10 @@
 >
 > 测试时间：2026-10-06 ~ 10-07（10-07 追加第 10 节：社区热门代码模型候选实测；第 11 节：hot cache 与并发调优）。所有数字都在同一台机器上实测，配置可以直接照抄复现。
 > 文中的“社区数据”均注明了来源。
+>
+> **2026-10-07 晚更新：** Qwen3.8 与 MiniCPM-V 已换成去审查版（速度与能力无损），三个日常模型连同确切设置已上传 Hub——见“补充”一节、`config/` 与 `recipes/`。
 
-![test samples](images/fig7_vision_test_samples.png)
+![test samples](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig7_vision_test_samples.png)
 
 ---
 
@@ -78,7 +80,7 @@ oMLX 0.7.0 **废弃了 `mtp_num_draft_tokens`**，MTP 深度改由两个新字�
 
 ### CyberTiel-35B-A3B（MoE）：自适应最快
 
-![CyberTiel MTP depth](images/fig1_cybertiel_mtp_depth.png)
+![CyberTiel MTP depth](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig1_cybertiel_mtp_depth.png)
 
 | 配置 | 中文 | 代码 | 推理 | 中位 | 接受率 |
 |---|---:|---:|---:|---:|---:|
@@ -91,7 +93,7 @@ oMLX 0.7.0 **废弃了 `mtp_num_draft_tokens`**，MTP 深度改由两个新字�
 
 ### Qwen3.8-27B（稠密）：固定 d2 最快，反而比默认自适应快
 
-![Qwen3.8 MTP depth](images/fig2_qwen38_mtp_depth.png)
+![Qwen3.8 MTP depth](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig2_qwen38_mtp_depth.png)
 
 | 配置 | 中文 | 代码 | 推理 | 中位 |
 |---|---:|---:|---:|---:|
@@ -138,7 +140,7 @@ oMLX 0.7.0 **废弃了 `mtp_num_draft_tokens`**，MTP 深度改由两个新字�
 10-06 我们已经给 CyberTiel 做过一次 FP16 转换，但**只测了短上下文、关闭 MTP 的纯解码**（58.0 vs 56.4–59.4），结论是“无收益”，于是否决了。
 10-07 看到 #3277 后补测 prefill 和长上下文，结果完全不同：
 
-![FP16 cast](images/fig3_fp16_cast_prefill_decode.png)
+![FP16 cast](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig3_fp16_cast_prefill_decode.png)
 
 **CyberTiel-35B-A3B**（转换 1569 个 BF16 张量，共 2.94 GB；ABBA，各跑 2 次取均值）：
 
@@ -214,7 +216,7 @@ CyberTiel 的转换报告：
 
 CyberTiel 和 Qwen3.8 都是多模态模型。MiniCPM-V-4.6 还有必要保留吗？三个模型跑同一套题：
 
-![vision](images/fig4_vision_three_models.png)
+![vision](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig4_vision_three_models.png)
 
 | 指标 | MiniCPM-V-4.6 8-bit | Qwen3.8-27B | CyberTiel-35B |
 |---|---:|---:|---:|
@@ -285,7 +287,7 @@ print(len(idx), n)   # 两者必须相等
 
 我们构造了一个约 3K token 的长文，把真正的答案放在中部，再放两个只含关键词的短干扰文：
 
-![rerank](images/fig6_reranker_truncation.png)
+![rerank](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig6_reranker_truncation.png)
 
 | | 长文 | 干扰 A | 干扰 B | 长文排名 |
 |---|---:|---:|---:|---:|
@@ -310,7 +312,7 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
 
 我们用同一语料复测（不上传）：
 
-![corpus effect](images/fig5_leaderboard_corpus_effect.png)
+![corpus effect](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig5_leaderboard_corpus_effect.png)
 
 | 本机 Qwen3.8-27B | 1K | 4K | 8K | 16K |
 |---|---:|---:|---:|---:|
@@ -343,7 +345,7 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
 - **CyberTiel 上游 09-29 重量化版**：作者换了代码 + 安全加权的校准语料，472 个量化张量里有 461 个变了。
 - **KAT-Coder-V2.5-Dev-VL-oQ6e-mtp**：讨论区有人推荐；快手官方 SWE-bench Verified 69.4，带护栏。
 
-![thinking flip](images/fig8_code_candidates_thinking_flip.png)
+![thinking flip](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig8_code_candidates_thinking_flip.png)
 
 | 测试 | 生产 CyberTiel | 上游 09-29 重量化 | KAT-Coder-V2.5 |
 |---|---:|---:|---:|
@@ -390,6 +392,31 @@ oMLX 0.7.0 的 hot cache（内存缓存层，本机原设 6 GB）存放在 oMLX 
 - TurboQuant 4-bit KV：两个模型的解码都慢约 20%。
 
 ---
+
+## 补充：这些笔记背后的模型已公开发布，并附完整设置（2026-10-07 晚）
+
+![本机栈](images/fig11_local_stack_overview.png)
+
+我们每天在用的三个模型——最终权重、中英文模型卡、配图和逐模型 oMLX 设置——已上传到 Hub，机器出意外或换新 Mac 时可以快速还原：
+
+| 模型 | 仓库 | 角色 | 实测（M1 Ultra 64 GB） |
+|---|---|---|---|
+| CyberTiel-Coder-35B-A3B（FP16 张量、fixed MTP 头） | [YCF-AI/CyberTiel-Coder-35B-MLX](https://huggingface.co/YCF-AI/CyberTiel-Coder-35B-MLX) | 日常主力、代码/智能体、去审查 | 107–116 tok/s，prefill 4K ≈ 1890 |
+| Qwen3.8-27B Huihui 去审查 oQ4e + MTP（FP16 张量） | [YCF-AI/Qwen3.8-27B-Huihui-abliterated-oQ4e-MTP-FP16-MLX](https://huggingface.co/YCF-AI/Qwen3.8-27B-Huihui-abliterated-oQ4e-MTP-FP16-MLX) | 手动调用的推理 + 最强视觉 | 48–49 tok/s，视觉 35/35 |
+| MiniCPM-V-4.6 Huihui 去审查 8-bit、downsample 4x | [YCF-AI/MiniCPM-V-4.6-Huihui-abliterated-8bit-MLX](https://huggingface.co/YCF-AI/MiniCPM-V-4.6-Huihui-abliterated-8bit-MLX) | OCR / 图表 | 约 140–180 tok/s，2.3 GB |
+
+Qwen3-Embedding-0.6B-8bit 与 bge-reranker-v2-m3 未做改动，不重复上传：直接用 `mlx-community/Qwen3-Embedding-0.6B-8bit` 与 `BAAI/bge-reranker-v2-m3`（重排前须把长文档切成约 300 字以内的块，见前文 Reranker 一节）。
+
+**把审查模型换成去审查版而不牺牲速度与能力。** 门禁：ABBA 对话测速、260 题能力集（McNemar）、35 项视觉 + 大图 OCR、16K 上下文、以及同时检查"史实是否客观陈述"的敏感探针集。
+
+![Qwen 替换](images/fig9_qwen38_uncensored_swap.png)
+![MiniCPM 替换](images/fig10_minicpm_uncensored_swap.png)
+
+- Qwen3.8-27B：采用 Huihui abliterated oQ4e——速度 49.3 vs 48.7 tok/s，260 题 215 vs 221（p=0.307），视觉 35/35，探针 10/10 且史实客观。PocketAiHub 版 10/10 但粉饰史实、16K 慢 4 %，否决。
+- MiniCPM-V-4.6：Huihui abliterated 8-bit + 4x——35/35，OCR 120/120，144 vs 145 tok/s。Heretic 版空间描述退化（33/35），否决。
+- 同一模型 ID 下换权重，所有客户端配置无需改动，**但必须按 model_name 清理该模型的 SSD KV 缓存**，否则会复用旧权重算出的缓存。
+
+**还原工具包：** [`config/`](config/)（脱敏全局设置、全部逐模型设置、`RESTORE.md`）、[`recipes/`](recipes/)（FP16 转换、MTP 头量化、对话测速、260 题脚本、缓存清理）、原始数据 `data/2026-10-07-uncensor/`。
 
 ## 12. 试过但否决的方案
 

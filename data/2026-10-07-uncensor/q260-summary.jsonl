@@ -1,0 +1,3 @@
+{"label": "qwen_prod", "total": "221/260", "mmlu": "39/50", "cmmlu": "38/50", "truthfulqa": "47/50", "gsm8k": "48/50", "humaneval": "19/20", "mbpp": "26/30", "livecodebench": "4/10", "truncated": 1, "errors": 0}
+{"label": "qwen_pocketq", "total": "221/260", "mmlu": "38/50", "cmmlu": "39/50", "truthfulqa": "47/50", "gsm8k": "49/50", "humaneval": "19/20", "mbpp": "25/30", "livecodebench": "4/10", "truncated": 0, "errors": 0}
+{"label": "qwen_huihui", "total": "215/260", "mmlu": "40/50", "cmmlu": "38/50", "truthfulqa": "44/50", "gsm8k": "46/50", "humaneval": "19/20", "mbpp": "24/30", "livecodebench": "4/10", "truncated": 4, "errors": 0}

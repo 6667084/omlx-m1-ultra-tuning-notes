@@ -1,0 +1,40 @@
+{
+ "src": "src/Qwen3.8-27B-Huihui-Abliterated-oQ4e-MTP-dl",
+ "cast_dtypes": [
+  "BF16"
+ ],
+ "tensors_cast": 1704,
+ "max_abs": 25.5,
+ "underflow_nonzero_to_zero": 22476,
+ "cloned": [
+  "LICENSE",
+  "README.md",
+  "chat_template.jinja",
+  "config.json",
+  "generation_config.json",
+  "merges.txt",
+  "model.safetensors.index.json",
+  "preprocessor_config.json",
+  "tokenizer.json",
+  "tokenizer_config.json",
+  "vocab.json"
+ ],
+ "rewritten": [
+  [
+   "model-00001-of-00004.safetensors",
+   639
+  ],
+  [
+   "model-00002-of-00004.safetensors",
+   471
+  ],
+  [
+   "model-00003-of-00004.safetensors",
+   480
+  ],
+  [
+   "model-00004-of-00004.safetensors",
+   114
+  ]
+ ]
+}

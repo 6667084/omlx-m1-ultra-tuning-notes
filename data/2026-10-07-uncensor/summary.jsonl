@@ -1,0 +1,12 @@
+{"label": "prod_A1", "per_prompt_median": {"zh_explain": 44.2, "code": 48.5, "reason": 49.4}, "overall_median": 48.5, "cv_pct": 4.6, "mtp_tok_per_cycle_median": 2.71, "mtp_accept_median": 88.7}
+{"label": "pocket_B1", "per_prompt_median": {"zh_explain": 41.7, "code": 45.1, "reason": 45.8}, "overall_median": 45.1, "cv_pct": 4.0, "mtp_tok_per_cycle_median": 2.69, "mtp_accept_median": 89.1}
+{"label": "pocket_B2", "per_prompt_median": {"zh_explain": 41.2, "code": 45.3, "reason": 45.7}, "overall_median": 45.3, "cv_pct": 4.6, "mtp_tok_per_cycle_median": 2.69, "mtp_accept_median": 89.1}
+{"label": "prod_A2", "per_prompt_median": {"zh_explain": 43.9, "code": 48.0, "reason": 49.2}, "overall_median": 48.0, "cv_pct": 4.7, "mtp_tok_per_cycle_median": 2.67, "mtp_accept_median": 87.6}
+{"label": "prod2_A1", "per_prompt_median": {"zh_explain": 44.5, "code": 48.9, "reason": 49.1}, "overall_median": 48.9, "cv_pct": 4.6, "mtp_tok_per_cycle_median": 2.74, "mtp_accept_median": 89.5}
+{"label": "pocketq_B1", "per_prompt_median": {"zh_explain": 43.9, "code": 48.9, "reason": 49.1}, "overall_median": 48.7, "cv_pct": 4.8, "mtp_tok_per_cycle_median": 2.72, "mtp_accept_median": 89.7}
+{"label": "pocketq_B2", "per_prompt_median": {"zh_explain": 43.6, "code": 48.6, "reason": 49.1}, "overall_median": 48.4, "cv_pct": 4.9, "mtp_tok_per_cycle_median": 2.72, "mtp_accept_median": 89.7}
+{"label": "prod2_A2", "per_prompt_median": {"zh_explain": 43.8, "code": 47.2, "reason": 49.0}, "overall_median": 47.2, "cv_pct": 4.9, "mtp_tok_per_cycle_median": 2.63, "mtp_accept_median": 86.1}
+{"label": "prod3_A1", "per_prompt_median": {"zh_explain": 44.5, "code": 48.8, "reason": 49.1}, "overall_median": 48.8, "cv_pct": 4.5, "mtp_tok_per_cycle_median": 2.74, "mtp_accept_median": 89.5}
+{"label": "huihui_B1", "per_prompt_median": {"zh_explain": 43.4, "code": 49.4, "reason": 49.5}, "overall_median": 49.4, "cv_pct": 6.1, "mtp_tok_per_cycle_median": 2.69, "mtp_accept_median": 87.9}
+{"label": "huihui_B2", "per_prompt_median": {"zh_explain": 43.2, "code": 49.6, "reason": 49.2}, "overall_median": 49.2, "cv_pct": 6.4, "mtp_tok_per_cycle_median": 2.69, "mtp_accept_median": 88.4}
+{"label": "prod3_A2", "per_prompt_median": {"zh_explain": 44.4, "code": 48.7, "reason": 49.0}, "overall_median": 48.7, "cv_pct": 4.6, "mtp_tok_per_cycle_median": 2.71, "mtp_accept_median": 88.7}

@@ -4,6 +4,8 @@
 
 > Tested 2026-10-06 / 10-07 (10-07 additions: section 9 on code-model candidates, section 10 on hot cache and concurrency). Every number comes from one machine. Every adopted change was checked with
 > ABBA runs in the same session and a fixed 260-question quality set. Community numbers are labelled.
+>
+> **Update 2026-10-07 evening:** the Qwen3.8 and MiniCPM-V builds were replaced with abliterated ones (no speed or capability loss) and all three daily models are now on the Hub with their exact settings — see section 11, `config/` and `recipes/`.
 
 ## TL;DR
 
@@ -49,8 +51,8 @@ The old key is **ignored silently**. Our documented "d2 / d3" settings had not b
 
 ## 2. Sweep the MTP depth per model
 
-![CyberTiel](images/fig1_cybertiel_mtp_depth.png)
-![Qwen](images/fig2_qwen38_mtp_depth.png)
+![CyberTiel](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig1_cybertiel_mtp_depth.png)
+![Qwen](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig2_qwen38_mtp_depth.png)
 
 **MoE CyberTiel (3B active per token): adaptive depth wins.**
 
@@ -86,7 +88,7 @@ The idea comes from oMLX PR [#3277](https://github.com/jundot/omlx/pull/3277), w
 
 **Our mistake.** We had already tried the cast on 10-06, but we only measured **short-context decode with MTP off**. That showed ±3 %, so we rejected it. Measuring prefill and long context told a different story:
 
-![fp16](images/fig3_fp16_cast_prefill_decode.png)
+![fp16](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig3_fp16_cast_prefill_decode.png)
 
 **CyberTiel-35B-A3B** (1569 BF16 tensors, 2.94 GB; mean of 2 ABBA runs per arm):
 
@@ -145,7 +147,7 @@ After you swap the weights, **purge that model's SSD KV cache blocks and GDN sid
 
 ## 4. A small dedicated VLM still earns its place
 
-![vision](images/fig4_vision_three_models.png)
+![vision](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig4_vision_three_models.png)
 
 | Metric | MiniCPM-V-4.6 | Qwen3.8-27B | CyberTiel-35B |
 |---|---:|---:|---:|
@@ -182,7 +184,7 @@ Another MLX engine rewrote our `model.safetensors.index.json`. It dropped 333 `v
 
 ## 7. `/v1/rerank` truncates encoder rerankers at 512 tokens (0.7.0)
 
-![rerank](images/fig6_reranker_truncation.png)
+![rerank](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig6_reranker_truncation.png)
 
 Test: a ~3K-token document with the answer in the middle, plus two short keyword-only distractors.
 
@@ -195,7 +197,7 @@ The request-level `max_length` and the per-model settings cannot override the li
 
 ## 8. Read leaderboard numbers with the corpus in mind
 
-![corpus](images/fig5_leaderboard_corpus_effect.png)
+![corpus](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig5_leaderboard_corpus_effect.png)
 
 A community entry from another M1 Ultra 64c / 64 GB machine shows Qwen3.8-27B at **67.7 tok/s at 4K**. The same session reads 41 at 1K and 33 at 8K. It used the **Code (Mixed)** corpus, where the 4K slice is easy for MTP to predict.
 
@@ -218,7 +220,7 @@ On the afternoon of 10-07 we checked the oMLX discussions and the Hugging Face t
 
 Both were cast to FP16 (section 3) and compared with production in the same session.
 
-![thinking flip](images/fig8_code_candidates_thinking_flip.png)
+![thinking flip](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig8_code_candidates_thinking_flip.png)
 
 | Test | Production CyberTiel | Upstream 09-29 requant | KAT-Coder-V2.5 |
 |---|---:|---:|---:|
@@ -253,6 +255,31 @@ Rejected in the same round:
 - ANE prefill: slower on CyberTiel. On Qwen it needs about 14 GiB per ANE instance, which does not fit in 64 GB.
 - A gs64 Qwen3.8 pack to enable the Q4 prefill kernel: identical prefill. A 27B dense model on M1 is compute-bound at about 290 tok/s.
 - TurboQuant 4-bit KV: decode about 20 % slower on both models.
+
+## 11. The models behind these notes are now published, with the exact settings (2026-10-07 evening)
+
+![local stack](images/fig11_local_stack_overview.png)
+
+The three models we run every day — with their final weights, bilingual cards, figures and per-model oMLX settings — are on the Hub, so a lost machine or a new Mac can be restored quickly:
+
+| Model | Repo | Role | Measured (M1 Ultra 64 GB) |
+|---|---|---|---|
+| CyberTiel-Coder-35B-A3B (FP16 tensors, fixed MTP head) | [YCF-AI/CyberTiel-Coder-35B-MLX](https://huggingface.co/YCF-AI/CyberTiel-Coder-35B-MLX) | daily driver, code/agent, abliterated | 107–116 tok/s, prefill 4K ≈ 1890 |
+| Qwen3.8-27B Huihui-abliterated oQ4e + MTP (FP16 tensors) | [YCF-AI/Qwen3.8-27B-Huihui-abliterated-oQ4e-MTP-FP16-MLX](https://huggingface.co/YCF-AI/Qwen3.8-27B-Huihui-abliterated-oQ4e-MTP-FP16-MLX) | manual reasoning + best vision | 48–49 tok/s, vision 35/35 |
+| MiniCPM-V-4.6 Huihui-abliterated 8-bit, downsample 4x | [YCF-AI/MiniCPM-V-4.6-Huihui-abliterated-8bit-MLX](https://huggingface.co/YCF-AI/MiniCPM-V-4.6-Huihui-abliterated-8bit-MLX) | OCR / charts | ≈ 140–180 tok/s, 2.3 GB |
+
+Qwen3-Embedding-0.6B-8bit and bge-reranker-v2-m3 are used unmodified, so they are not re-uploaded: use `mlx-community/Qwen3-Embedding-0.6B-8bit` and `BAAI/bge-reranker-v2-m3` (chunk long documents to ≤ ~300 characters before reranking — section 7).
+
+**Replacing censored models with abliterated ones without losing speed or ability.** Gates: ABBA chat speed, the 260-question set (McNemar), a 35-item vision suite + large-page OCR, 16K context, a sensitive-probe set that also checks whether *history is stated objectively*.
+
+![qwen swap](images/fig9_qwen38_uncensored_swap.png)
+![minicpm swap](images/fig10_minicpm_uncensored_swap.png)
+
+- Qwen3.8-27B: Huihui abliterated oQ4e — speed 49.3 vs 48.7 tok/s, 215 vs 221 on 260 questions (p = 0.307), vision 35/35, probes 10/10 with objective history. PocketAiHub's build answered 10/10 but whitewashed history and lost 4 % at 16K → rejected.
+- MiniCPM-V-4.6: Huihui abliterated 8-bit + 4x — 35/35, OCR 120/120, 144 vs 145 tok/s. Heretic's build lost spatial descriptions (33/35) → rejected.
+- Swapping weights under the same model ID keeps every client config unchanged, **but purge the SSD KV cache blocks of that model name**, or you reuse caches computed from the old weights.
+
+**Restore kit:** [`config/`](config/) (redacted global settings, all per-model settings, `RESTORE.md`), [`recipes/`](recipes/) (FP16 cast, MTP-head quantization, chat benchmark, 260-question runner, cache scanner), raw data in `data/2026-10-07-uncensor/`.
 
 ## Rejected or not applicable
 
