@@ -246,6 +246,8 @@ The SSD restores cache blocks faster than the compressed hot tier, so turning it
 
 We also set `max_concurrent_requests` back from 4 to the upstream default of 8. With 8 parallel requests, aggregate throughput rose 18 % and the worst TTFT dropped from 15.3 s to 3.4 s (with a cap of 4, the extra requests just queue).
 
+Should you raise the Metal cap (`sudo sysctl iogpu.wired_limit_mb=57344`, 48 → 56 GB) so that CyberTiel (~26 GB) and Qwen3.8 (~19.5 GB) can stay resident together? That depends on how you use them. We use CyberTiel every day and call Qwen only by hand, so a switch costs one occasional reload: about 6 s for Qwen and 10 s back to CyberTiel. That is not worth leaving the OS and KV only about 8 GB of headroom all the time, so we keep the default 48 GB. CyberTiel alone peaks at 36.8 GB at 128K. Raise the cap only if you alternate between the two models often.
+
 Rejected in the same round:
 - Burst decode `aggressive`: within noise.
 - ANE prefill: slower on CyberTiel. On Qwen it needs about 14 GiB per ANE instance, which does not fit in 64 GB.

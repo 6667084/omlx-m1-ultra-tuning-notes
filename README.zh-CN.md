@@ -378,6 +378,11 @@ oMLX 0.7.0 的 hot cache（内存缓存层，本机原设 6 GB）存放在 oMLX 
 
 同一轮还把 `max_concurrent_requests` 从 4 调回上游默认的 8。8 路并发时总吞吐 +18%，最差首字从 15.3 s 降到 3.4 s（上限为 4 时，多出的请求只能排队）。
 
+要不要把 Metal 上限提高（`sudo sysctl iogpu.wired_limit_mb=57344`，48 → 56 GB），让 CyberTiel（约 26 GB）和 Qwen3.8（约 19.5 GB）同时常驻？
+要看使用方式。我们日常只用 CyberTiel，Qwen 是按需手动调用。切换的代价只是偶尔多等一次加载：Qwen 约 6 s，回切 CyberTiel 约 10 s。
+为此长期把系统和 KV 的余量压到约 8 GB 并不划算，所以保持默认 48 GB；CyberTiel 单独跑 128K 时峰值 36.8 GB，完全够用。
+如果你的两个模型需要频繁交替，才值得提高上限。
+
 这一轮否决的方案：
 - Burst Decode `aggressive`：在噪声内。
 - ANE prefill：CyberTiel 反而更慢；Qwen 每个 ANE 实例要 14 GiB，64 GB 内存装不下。
