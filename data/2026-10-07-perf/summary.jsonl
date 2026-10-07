@@ -1,0 +1,6 @@
+{"label": "burstCT_balanced_A1", "per_prompt_median": {"zh_explain": 81.7, "code": 105.1, "reason": 114.1}, "overall_median": 105.1, "cv_pct": 12.8, "mtp_tok_per_cycle_median": 2.94, "mtp_accept_median": 80.9}
+{"label": "burstCT_aggressive_B1", "per_prompt_median": {"zh_explain": 83.8, "code": 103.6, "reason": 104.3}, "overall_median": 98.5, "cv_pct": 9.8, "mtp_tok_per_cycle_median": 2.8, "mtp_accept_median": 78.3}
+{"label": "burstCT_aggressive_B2", "per_prompt_median": {"zh_explain": 82.7, "code": 102.4, "reason": 102.6}, "overall_median": 102.0, "cv_pct": 10.7, "mtp_tok_per_cycle_median": 2.97, "mtp_accept_median": 80.9}
+{"label": "burstCT_balanced_A2", "per_prompt_median": {"zh_explain": 85.1, "code": 103.4, "reason": 103.1}, "overall_median": 100.6, "cv_pct": 9.8, "mtp_tok_per_cycle_median": 3.03, "mtp_accept_median": 81.8}
+{"label": "final_CT", "per_prompt_median": {"zh_explain": 83.3, "code": 107.8, "reason": 106.9}, "overall_median": 106.9, "cv_pct": 10.4, "mtp_tok_per_cycle_median": 2.93, "mtp_accept_median": 80.8}
+{"label": "final_Q", "per_prompt_median": {"zh_explain": 43.9, "code": 47.3, "reason": 49.0}, "overall_median": 47.3, "cv_pct": 4.7, "mtp_tok_per_cycle_median": 2.64, "mtp_accept_median": 86.6}

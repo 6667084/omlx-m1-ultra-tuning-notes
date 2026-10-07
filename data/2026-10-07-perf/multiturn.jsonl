@@ -1,0 +1,6 @@
+{"label": "hot6", "s": 0, "prompt1": 12240, "ttft1": 9.26, "prompt2": 12293, "cached2": 12233, "ttft2": 0.47}
+{"label": "hot6", "s": 1, "prompt1": 12236, "ttft1": 7.87, "prompt2": 12289, "cached2": 12229, "ttft2": 0.48}
+{"label": "hot6", "s": 2, "prompt1": 12237, "ttft1": 8.38, "prompt2": 12290, "cached2": 12230, "ttft2": 0.68}
+{"label": "hot0", "s": 0, "prompt1": 12236, "ttft1": 8.52, "prompt2": 12289, "cached2": 12229, "ttft2": 0.43}
+{"label": "hot0", "s": 1, "prompt1": 12236, "ttft1": 7.22, "prompt2": 12289, "cached2": 12229, "ttft2": 0.43}
+{"label": "hot0", "s": 2, "prompt1": 12237, "ttft1": 7.21, "prompt2": 12290, "cached2": 12230, "ttft2": 0.46}

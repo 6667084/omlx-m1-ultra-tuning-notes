@@ -5,7 +5,7 @@
 > 关键词：oMLX、MLX、Apple Silicon、M1 Ultra、Lightning MTP、投机解码、BF16→FP16、Qwen3.8-27B、
 > CyberTiel-35B-A3B、MiniCPM-V-4.6、Reranker
 >
-> 测试时间：2026-10-06 ~ 10-07（10-07 下午追加第 10 节：社区热门代码模型候选实测）。所有数字都在同一台机器上实测，配置可以直接照抄复现。
+> 测试时间：2026-10-06 ~ 10-07（10-07 追加第 10 节：社区热门代码模型候选实测；第 11 节：hot cache 与并发调优）。所有数字都在同一台机器上实测，配置可以直接照抄复现。
 > 文中的“社区数据”均注明了来源。
 
 ![test samples](images/fig7_vision_test_samples.png)
@@ -22,7 +22,7 @@
 | **Qwen3-Embedding-0.6B-8bit** | 不改（已是 FP16 张量） | — |
 | **bge-reranker-v2-m3** | 不改；**客户端分块** | 修复 0.7.0 的 512 token 静默截断：答案在长文中部时，排名从末位回到第一 |
 
-有 9 条经验值得分享，前三条收益最大（第 9 条是选型时最容易踩的坑）：
+有 10 条经验值得分享，前三条收益最大（第 9 条是选型时最容易踩的坑，第 10 条让 64 GB 机器的长上下文真正可用）：
 
 1. **M1/M2 没有硬件 BF16。** 把模型里没量化的 BF16 张量转成 FP16，prefill 能快 30–50%。只测短上下文解码会看不出来，我们第一次就因此误判过。
 2. **升级 oMLX 0.7.0 之后，旧的 MTP 深度字段会静默失效。** 而且最优深度因模型而异，必须逐档测。
@@ -363,7 +363,30 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
 
 ---
 
-## 11. 试过但否决的方案
+## 11. 经验十：64 GB 机器上关掉 hot cache，长上下文才真正可用
+
+oMLX 0.7.0 的 hot cache（内存缓存层，本机原设 6 GB）存放在 oMLX 进程的 CPU 内存里。
+空闲时这块内存会被 macOS 压缩，但仍然算在内存守卫的 oMLX 占用里。结果是：只要加载了 CyberTiel（约 30 GB），
+64K 的 prompt 就会被守卫拒绝（"Prefill would require ~44.5 GB … dynamic ceiling 43.1 GB"）。
+
+| hot cache | oMLX 空载常驻 | 12K 多轮对话命中缓存的首字 | CyberTiel 64K | CyberTiel 128K |
+|---|---:|---:|---|---|
+| 6 GB | 7.8 GB | 0.47–0.68 s | ❌ 被拒绝 | — |
+| **0（只用 SSD 缓存）** | **0.8 GB** | **0.43–0.46 s** | ✅ prefill 957 tok/s，解码 71 | ✅ prefill 614，解码 60，峰值 36.8 GB |
+
+本机 SSD 恢复缓存块比读被压缩的内存还快，所以关掉 hot cache 没有任何代价。上游 main 的 #4252 修了同一个问题（拒绝前先释放 hot cache），但还没进正式版。
+
+同一轮还把 `max_concurrent_requests` 从 4 调回上游默认的 8。8 路并发时总吞吐 +18%，最差首字从 15.3 s 降到 3.4 s（上限为 4 时，多出的请求只能排队）。
+
+这一轮否决的方案：
+- Burst Decode `aggressive`：在噪声内。
+- ANE prefill：CyberTiel 反而更慢；Qwen 每个 ANE 实例要 14 GiB，64 GB 内存装不下。
+- 把 Qwen3.8 换成 gs64 打包来启用 Q4 prefill 内核：prefill 完全一致。27B 稠密模型在 M1 上约 290 tok/s，已经是算力上限。
+- TurboQuant 4-bit KV：两个模型的解码都慢约 20%。
+
+---
+
+## 12. 试过但否决的方案
 
 | 方案 | 结论 | 依据 |
 |---|---|---|
@@ -377,10 +400,11 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
 | MiniCPM / Reranker / Qwen 视觉塔转 FP16 | ❌ | 见第 4 节，收益低于 5% 的门槛 |
 | CyberTiel 上游 09-29 重量化版 | ❌ | 见第 10 节：三项能力测试都在噪声内 |
 | KAT-Coder-V2.5-Dev oQ6e-mtp | ❌（生产口径） | 见第 10 节：关思考 +23 题，开思考 −14 题 |
+| ANE prefill / gs64 Qwen / TurboQuant KV / Burst aggressive | ❌ | 见第 11 节 |
 
 ---
 
-## 12. 最终配置（照抄即可）
+## 13. 最终配置（照抄即可）
 
 ```jsonc
 // ~/.omlx/model_settings.json（节选；建议通过 admin API 或 GUI 修改，不要在服务运行时手改文件）
@@ -402,12 +426,13 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
 ```jsonc
 // ~/.omlx/settings.json（节选）
 "memory": { "memory_guard_tier": "balanced", "soft_threshold": 0.85, "hard_threshold": 0.95 }   // 0.85 = 交给档位管理
-"scheduler": { "max_concurrent_requests": 4, "chunked_prefill": true }
+"scheduler": { "max_concurrent_requests": 8, "chunked_prefill": true }   // 上游默认值
+"cache": { "hot_cache_max_size": "0" }   // 64 GB 机器上关闭 hot cache，长上下文才进得去（见第 11 节）
 ```
 
 ---
 
-## 13. 注意事项
+## 14. 注意事项
 
 - **开启 MTP 后，T=0 的输出不保证逐字一致**（上游 #4089）。做质量对比时先测出噪声底，例如同一配置重跑一次。
 - **内置基准会自动上传到 omlx.ai**，上传内容包括芯片、内存、模型名、模型设置和成绩。不想公开可以加 `align_prompt_to_ane: true`；或者在 GUI 里确认上传选项。
@@ -433,6 +458,7 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
   - [Qwen3-Embedding-0.6B-8bit](https://huggingface.co/mlx-community/Qwen3-Embedding-0.6B-8bit)
   - [bge-reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3)
 
+*欢迎拿你的机器复现并回帖交流。M1/M2 用户尤其建议试一下第 4 节的 FP16 转换。*
 
 ## 数据、脚本与许可
 
@@ -445,6 +471,7 @@ omlx.ai 社区榜上，另一台同为 M1 Ultra 64 核 GPU / 64 GB 的机器跑 
   - 空闲后首字延迟：`idle_ttft.jsonl`。
   - 转换报告：`fp16-*.json`。
 - `data/2026-10-07-candidates/`（第 10 节）：代码 324 题（`q260-code324-*`）、260 题门禁（`q260-g260-*`）、开思考 LiveCodeBench 60（`q260-lcb60think-*`）逐题结果；同时段测速 ABBA：`builtin.jsonl`、`results.jsonl`、`summary.jsonl`。
+- `data/2026-10-07-perf/`（第 11 节）：hot cache 与并发 ABBA（`multiturn.jsonl`、`concurrent.jsonl`），长上下文、ANE、TurboQuant、Burst 测试（`builtin.jsonl`、`summary.jsonl`）。
 - `scripts/to_fp16.py`：离线 BF16→FP16 转换脚本。只改写含 BF16 张量的分片，其余文件用 APFS 克隆。用法：`python to_fp16.py <源模型目录> <输出目录> [--f32]`。
 - 许可：文字、图表与数据采用 CC BY 4.0；脚本采用 MIT。测试图全部为合成数据，不含任何个人信息。
 

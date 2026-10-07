@@ -2,7 +2,7 @@
 
 # Tuning 5 local models on an M1 Ultra (64 GB) with oMLX 0.7.0 — measured notes
 
-> Tested 2026-10-06 / 10-07 (section 9 on community code-model candidates added 10-07 afternoon). Every number comes from one machine. Every adopted change was checked with
+> Tested 2026-10-06 / 10-07 (10-07 additions: section 9 on code-model candidates, section 10 on hot cache and concurrency). Every number comes from one machine. Every adopted change was checked with
 > ABBA runs in the same session and a fixed 260-question quality set. Community numbers are labelled.
 
 ## TL;DR
@@ -233,6 +233,25 @@ Both were cast to FP16 (section 3) and compared with production in the same sess
 - Speed is identical (same architecture, same quantization), so we kept production as is.
 - Method note: after hours of back-to-back tests, the SSD cache hit its cap and two 28 GB models were swapping in and out. Chat speed dropped to 77–92 tok/s and came back to 112 after a restart and cache cleanup. Only compare models within one ABBA session.
 
+## 10. On a 64 GB Mac, turn the hot cache off
+
+In 0.7.0 the hot cache (an in-memory cache tier; ours was 6 GB) lives in the oMLX process's CPU memory. When it sits idle, macOS compresses it, but the memory guard still counts it as oMLX usage. With CyberTiel loaded (~30 GB), every 64K prompt was rejected: "Prefill would require ~44.5 GB … dynamic ceiling 43.1 GB".
+
+| Hot cache | oMLX idle footprint | 12K multi-turn cached TTFT | CyberTiel 64K | CyberTiel 128K |
+|---|---:|---:|---|---|
+| 6 GB | 7.8 GB | 0.47–0.68 s | ❌ rejected | — |
+| **0 (SSD cache only)** | **0.8 GB** | **0.43–0.46 s** | ✅ 957 tok/s prefill, 71 decode | ✅ 614 prefill, 60 decode, 36.8 GB peak |
+
+The SSD restores cache blocks faster than the compressed hot tier, so turning it off costs nothing here. #4252 on `main` fixes the same problem upstream by freeing the hot cache before rejecting.
+
+We also set `max_concurrent_requests` back from 4 to the upstream default of 8. With 8 parallel requests, aggregate throughput rose 18 % and the worst TTFT dropped from 15.3 s to 3.4 s (with a cap of 4, the extra requests just queue).
+
+Rejected in the same round:
+- Burst decode `aggressive`: within noise.
+- ANE prefill: slower on CyberTiel. On Qwen it needs about 14 GiB per ANE instance, which does not fit in 64 GB.
+- A gs64 Qwen3.8 pack to enable the Q4 prefill kernel: identical prefill. A 27B dense model on M1 is compute-bound at about 290 tok/s.
+- TurboQuant 4-bit KV: decode about 20 % slower on both models.
+
 ## Rejected or not applicable
 
 | Option | Verdict |
@@ -246,6 +265,7 @@ Both were cast to FP16 (section 3) and compared with production in the same sess
 | Qwen3.8-Flash-Next | 105 GiB at 4-bit; does not fit in 64 GB |
 | CyberTiel upstream 09-29 requant | Within noise on all three quality tests (section 9) |
 | KAT-Coder-V2.5-Dev oQ6e-mtp | +23 with thinking off, −14 with thinking on (section 9) |
+| ANE prefill / gs64 Qwen / TurboQuant KV / burst `aggressive` | See section 10 |
 
 ## Final settings
 
@@ -254,7 +274,8 @@ Both were cast to FP16 (section 3) and compared with production in the same sess
 "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX": { "mtp_enabled": true, "mtp_fixed_depth": 2, "thinking_budget_enabled": true, "thinking_budget_tokens": 16384 },
 "MiniCPM-V-4.6-8bit":                     { "temperature": 0.0, "top_p": 1.0 },
 // settings.json
-"memory": { "memory_guard_tier": "balanced", "soft_threshold": 0.85, "hard_threshold": 0.95 }
+"memory": { "memory_guard_tier": "balanced", "soft_threshold": 0.85, "hard_threshold": 0.95 },
+"scheduler": { "max_concurrent_requests": 8 }, "cache": { "hot_cache_max_size": "0" }   // section 10
 ```
 
 **Caveats**
@@ -276,6 +297,7 @@ Both were cast to FP16 (section 3) and compared with production in the same sess
   - Reranker truncation test: `rerank.jsonl`.
   - Idle-TTFT probe: `idle_ttft.jsonl`.
 - `data/2026-10-07-candidates/` (section 9): per-question results for the 324-question code set (`q260-code324-*`), the 260-question gate (`q260-g260-*`) and thinking-on LiveCodeBench 60 (`q260-lcb60think-*`); same-session speed ABBA in `builtin.jsonl`, `results.jsonl`, `summary.jsonl`.
+- `data/2026-10-07-perf/` (section 10): hot-cache and concurrency ABBA (`multiturn.jsonl`, `concurrent.jsonl`), long-context, ANE, TurboQuant and burst runs (`builtin.jsonl`, `summary.jsonl`).
   - Conversion reports: `fp16-*.json`.
 - `scripts/to_fp16.py`: the offline BF16→FP16 cast. It only rewrites shards that contain BF16 tensors and APFS-clones everything else. Usage: `python to_fp16.py <src_model_dir> <dst_dir> [--f32]`.
 - Text, figures and data: CC BY 4.0. Script: MIT. All test images are synthetic; no personal data is included.

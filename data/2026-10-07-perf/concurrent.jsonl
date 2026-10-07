@@ -1,0 +1,4 @@
+{"label": "conc4_A1", "N": 8, "agg_tps": 144.0, "wall": 26.0, "e2e_max": 26.0, "per_req_tps_med": 33.2, "ttft_max": 15.4}
+{"label": "conc8_B1", "N": 8, "agg_tps": 163.9, "wall": 22.8, "e2e_max": 22.8, "per_req_tps_med": 22.7, "ttft_max": 3.39}
+{"label": "conc8_B2", "N": 8, "agg_tps": 178.4, "wall": 22.0, "e2e_max": 22.0, "per_req_tps_med": 23.3, "ttft_max": 3.33}
+{"label": "conc4_A2", "N": 8, "agg_tps": 144.4, "wall": 25.9, "e2e_max": 25.9, "per_req_tps_med": 34.0, "ttft_max": 15.09}
