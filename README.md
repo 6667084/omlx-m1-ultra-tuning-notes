@@ -2,7 +2,7 @@
 
 # Tuning 5 local models on an M1 Ultra (64 GB) with oMLX 0.7.0 — measured notes
 
-> Tested 2026-10-06 / 10-07. Every number comes from one machine. Every adopted change was checked with
+> Tested 2026-10-06 / 10-07 (section 9 on community code-model candidates added 10-07 afternoon). Every number comes from one machine. Every adopted change was checked with
 > ABBA runs in the same session and a fixed 260-question quality set. Community numbers are labelled.
 
 ## TL;DR
@@ -209,6 +209,30 @@ Fixed d2 still beats adaptive on that corpus. Compare the whole curve from one s
 
 For comparison, the community **oQ4e** CyberTiel on an M1 Ultra 64c shows 4K PP 1219 / TG 73.6. Our larger **oQ6e** build after the FP16 cast reaches 4K PP 1891 / TG 89, and 16K PP 1644 / TG 117.
 
+## 9. Evaluate code models in the thinking mode you actually use
+
+On the afternoon of 10-07 we checked the oMLX discussions and the Hugging Face trending list, then picked two candidates. Both have the same architecture as our main model (Qwen3.6-35B-A3B MoE) and the same size (oQ6e, about 28 GB):
+
+- **CyberTiel upstream 09-29 requant.** It uses a new code- and security-weighted calibration corpus; 461 of 472 quantized tensors changed.
+- **KAT-Coder-V2.5-Dev-VL-oQ6e-mtp.** Recommended in the discussions; Kwaipilot reports 69.4 on SWE-bench Verified.
+
+Both were cast to FP16 (section 3) and compared with production in the same session.
+
+![thinking flip](images/fig8_code_candidates_thinking_flip.png)
+
+| Test | Production CyberTiel | Upstream 09-29 requant | KAT-Coder-V2.5 |
+|---|---:|---:|---:|
+| Code 324 (HumanEval 164 / MBPP 100 / LCB 60), thinking off, T=0 | 242 (re-run 240) | 247 | **265** (+29/−6, p=0.0001) |
+| General 260-question gate | 205 | 206 | 212 |
+| **LiveCodeBench 60, thinking on, T=0.6** (how we use it) | **40** | 38 | **26** (0 wins / 14 losses) |
+| Median answer length with thinking on | 926 tok | 902 tok | 306 tok |
+| Prefill 4K / 16K (tok/s) | 1910 / 1620 | — | 1917 / 1620 |
+
+- **KAT really is better at short code with thinking off.** It was trained with RL to think very briefly, though, so on algorithm problems that need long reasoning it loses clearly to CyberTiel. A thinking-off HumanEval/MBPP comparison alone would have picked the wrong model.
+- **The upstream requant** stayed within noise on all three tests (re-running the same config moves the 324-question score by about 2). It also used 27 % more thinking tokens. The card's gains were measured on GGUF with SWE-bench-Live and did not reproduce in MLX.
+- Speed is identical (same architecture, same quantization), so we kept production as is.
+- Method note: after hours of back-to-back tests, the SSD cache hit its cap and two 28 GB models were swapping in and out. Chat speed dropped to 77–92 tok/s and came back to 112 after a restart and cache cleanup. Only compare models within one ABBA session.
+
 ## Rejected or not applicable
 
 | Option | Verdict |
@@ -220,6 +244,8 @@ For comparison, the community **oQ4e** CyberTiel on an M1 Ultra 64c shows 4K PP 
 | ANE prefill | Needs group size 64 or 128; our Qwen pack uses gs32 |
 | Idle stall from #4040 | Not reproduced: TTFT is 0.38–0.52 s after 0.3–15 s idle, so we skip `sudo sysctl iogpu.wired_limit_mb` |
 | Qwen3.8-Flash-Next | 105 GiB at 4-bit; does not fit in 64 GB |
+| CyberTiel upstream 09-29 requant | Within noise on all three quality tests (section 9) |
+| KAT-Coder-V2.5-Dev oQ6e-mtp | +23 with thinking off, −14 with thinking on (section 9) |
 
 ## Final settings
 
@@ -249,6 +275,7 @@ For comparison, the community **oQ4e** CyberTiel on an M1 Ultra 64c shows 4K PP 
   - Vision ABBA: `vision_compare.jsonl`.
   - Reranker truncation test: `rerank.jsonl`.
   - Idle-TTFT probe: `idle_ttft.jsonl`.
+- `data/2026-10-07-candidates/` (section 9): per-question results for the 324-question code set (`q260-code324-*`), the 260-question gate (`q260-g260-*`) and thinking-on LiveCodeBench 60 (`q260-lcb60think-*`); same-session speed ABBA in `builtin.jsonl`, `results.jsonl`, `summary.jsonl`.
   - Conversion reports: `fp16-*.json`.
 - `scripts/to_fp16.py`: the offline BF16→FP16 cast. It only rewrites shards that contain BF16 tensors and APFS-clones everything else. Usage: `python to_fp16.py <src_model_dir> <dst_dir> [--f32]`.
 - Text, figures and data: CC BY 4.0. Script: MIT. All test images are synthetic; no personal data is included.

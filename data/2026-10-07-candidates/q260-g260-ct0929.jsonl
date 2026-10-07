@@ -1,0 +1,260 @@
+{"id": "mmlu:0", "suite": "mmlu", "sha": "e0a6ae7c13637841", "correct": false, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 14.39}
+{"id": "mmlu:1", "suite": "mmlu", "sha": "c8b4c040aee5c325", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 15.09}
+{"id": "mmlu:2", "suite": "mmlu", "sha": "6aaeeccc02df02b1", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 14.45}
+{"id": "mmlu:3", "suite": "mmlu", "sha": "e6be6a273402e768", "correct": false, "pred": "", "finish": "stop", "completion_tokens": 41, "wall": 18.98}
+{"id": "mmlu:4", "suite": "mmlu", "sha": "1394c20d034e6eac", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.44}
+{"id": "mmlu:5", "suite": "mmlu", "sha": "9bf58f477d7d5a12", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 2.15}
+{"id": "mmlu:6", "suite": "mmlu", "sha": "39f304ec523740fd", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 4.19}
+{"id": "mmlu:7", "suite": "mmlu", "sha": "9848628dfb89b06b", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 4.11}
+{"id": "mmlu:8", "suite": "mmlu", "sha": "cc34a1954ca93264", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.59}
+{"id": "mmlu:9", "suite": "mmlu", "sha": "3eda2e9cabda7d0a", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.54}
+{"id": "mmlu:10", "suite": "mmlu", "sha": "b839378f0c8144bf", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.9}
+{"id": "mmlu:11", "suite": "mmlu", "sha": "abe1a28bf3cfb04c", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.3}
+{"id": "mmlu:12", "suite": "mmlu", "sha": "44926bf01b92916a", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.34}
+{"id": "mmlu:13", "suite": "mmlu", "sha": "e19e100e49305162", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 2.51}
+{"id": "mmlu:14", "suite": "mmlu", "sha": "0b6d379a03e65d19", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 3.14}
+{"id": "mmlu:15", "suite": "mmlu", "sha": "bcf3ef058aba388f", "correct": false, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.79}
+{"id": "mmlu:16", "suite": "mmlu", "sha": "31137ba80fcbe941", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.78}
+{"id": "mmlu:17", "suite": "mmlu", "sha": "3c7628577d10dfc4", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 3.18}
+{"id": "mmlu:18", "suite": "mmlu", "sha": "4551dccf07db4c51", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.05}
+{"id": "mmlu:19", "suite": "mmlu", "sha": "76989eca27772fa6", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.75}
+{"id": "mmlu:20", "suite": "mmlu", "sha": "cb708df827d6a218", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 3.77}
+{"id": "mmlu:21", "suite": "mmlu", "sha": "eda51315da868450", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 3.27}
+{"id": "mmlu:22", "suite": "mmlu", "sha": "2d90fdffaa442c02", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 4.38}
+{"id": "mmlu:23", "suite": "mmlu", "sha": "285423227071bfbb", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 3.61}
+{"id": "mmlu:24", "suite": "mmlu", "sha": "667f3e8a929aa6b6", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 2.58}
+{"id": "mmlu:25", "suite": "mmlu", "sha": "2f32f3f260353501", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.53}
+{"id": "mmlu:26", "suite": "mmlu", "sha": "8f6eeeb72f0f3789", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.98}
+{"id": "mmlu:27", "suite": "mmlu", "sha": "83e6300d768f86f6", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.54}
+{"id": "mmlu:28", "suite": "mmlu", "sha": "62e3a160accf746d", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.46}
+{"id": "mmlu:29", "suite": "mmlu", "sha": "0d58d3941a13230c", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.6}
+{"id": "mmlu:30", "suite": "mmlu", "sha": "23a45180ec7c1c38", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.19}
+{"id": "mmlu:31", "suite": "mmlu", "sha": "66c461ad135466b3", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 5.47}
+{"id": "mmlu:32", "suite": "mmlu", "sha": "75c8b37f6f7d1bf5", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 4.21}
+{"id": "mmlu:33", "suite": "mmlu", "sha": "cd763dceab9b38dd", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 4.08}
+{"id": "mmlu:34", "suite": "mmlu", "sha": "7d0498b34af206a5", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 4.58}
+{"id": "mmlu:35", "suite": "mmlu", "sha": "c146ce07262668cc", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.03}
+{"id": "mmlu:36", "suite": "mmlu", "sha": "d23b74e0e5d30f3c", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.98}
+{"id": "mmlu:37", "suite": "mmlu", "sha": "6c6463347858a4a5", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.57}
+{"id": "mmlu:38", "suite": "mmlu", "sha": "2593b5fccb3b691b", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 2.46}
+{"id": "mmlu:39", "suite": "mmlu", "sha": "08eb890e1adb56c7", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.86}
+{"id": "mmlu:40", "suite": "mmlu", "sha": "45fe095093ffaeb7", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.35}
+{"id": "mmlu:41", "suite": "mmlu", "sha": "242d7a7a56603332", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.29}
+{"id": "mmlu:42", "suite": "mmlu", "sha": "3d250f43c755d410", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.24}
+{"id": "mmlu:43", "suite": "mmlu", "sha": "844ce4eb45b59d5b", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "mmlu:44", "suite": "mmlu", "sha": "ed1e3c9c3d10dbc7", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 2.25}
+{"id": "mmlu:45", "suite": "mmlu", "sha": "6cdf50ad0e6452d6", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 2.35}
+{"id": "mmlu:46", "suite": "mmlu", "sha": "a98bfbe08ef711ac", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 2.46}
+{"id": "mmlu:47", "suite": "mmlu", "sha": "1504d61fb037bc06", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 3.24}
+{"id": "mmlu:48", "suite": "mmlu", "sha": "6f51b7531687b03a", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 3.29}
+{"id": "mmlu:49", "suite": "mmlu", "sha": "dbad57a29295cfac", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 2.55}
+{"id": "cmmlu:0", "suite": "cmmlu", "sha": "8d1130a031ebcda0", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.42}
+{"id": "cmmlu:1", "suite": "cmmlu", "sha": "a92e303d8fbe2bfb", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.48}
+{"id": "cmmlu:2", "suite": "cmmlu", "sha": "fd2c26e7979a3c5d", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 5, "wall": 1.36}
+{"id": "cmmlu:3", "suite": "cmmlu", "sha": "179053b204c2e4f6", "correct": false, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "cmmlu:4", "suite": "cmmlu", "sha": "6522bc4480fbb6aa", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.77}
+{"id": "cmmlu:5", "suite": "cmmlu", "sha": "50bf95879d2e1403", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.8}
+{"id": "cmmlu:6", "suite": "cmmlu", "sha": "78f9ba186ad1721e", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.75}
+{"id": "cmmlu:7", "suite": "cmmlu", "sha": "05d00e17cb0474d0", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "cmmlu:8", "suite": "cmmlu", "sha": "76dfc9a22762ef6b", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.65}
+{"id": "cmmlu:9", "suite": "cmmlu", "sha": "4c8233b5e8ac7f29", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "cmmlu:10", "suite": "cmmlu", "sha": "babb2543007e363d", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "cmmlu:11", "suite": "cmmlu", "sha": "fd1bdcde5cba0d44", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 13, "wall": 3.02}
+{"id": "cmmlu:12", "suite": "cmmlu", "sha": "6659637ad8a9d78d", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.47}
+{"id": "cmmlu:13", "suite": "cmmlu", "sha": "49a159b5b4b6cb05", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.11}
+{"id": "cmmlu:14", "suite": "cmmlu", "sha": "10b867ab973f144c", "correct": false, "pred": "D", "finish": "length", "completion_tokens": 128, "wall": 11.17}
+{"id": "cmmlu:15", "suite": "cmmlu", "sha": "d8cedc4ecba7239d", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 67, "wall": 5.87}
+{"id": "cmmlu:16", "suite": "cmmlu", "sha": "799442279269bd9a", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.23}
+{"id": "cmmlu:17", "suite": "cmmlu", "sha": "0fb99f9d001921a7", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 95, "wall": 7.66}
+{"id": "cmmlu:18", "suite": "cmmlu", "sha": "ec379f083f907de0", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.28}
+{"id": "cmmlu:19", "suite": "cmmlu", "sha": "589358629a69d133", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 0.73}
+{"id": "cmmlu:20", "suite": "cmmlu", "sha": "a5dc70b9e8100ff0", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 0.75}
+{"id": "cmmlu:21", "suite": "cmmlu", "sha": "23fdebdd6cac48e0", "correct": false, "pred": "B", "finish": "stop", "completion_tokens": 7, "wall": 0.92}
+{"id": "cmmlu:22", "suite": "cmmlu", "sha": "99da7e523fc959ac", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 0.68}
+{"id": "cmmlu:23", "suite": "cmmlu", "sha": "744c845eeba986fa", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.09}
+{"id": "cmmlu:24", "suite": "cmmlu", "sha": "374359d59796f37a", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.12}
+{"id": "cmmlu:25", "suite": "cmmlu", "sha": "9d24c07222940c4e", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.11}
+{"id": "cmmlu:26", "suite": "cmmlu", "sha": "2ec62a74ec734441", "correct": false, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.1}
+{"id": "cmmlu:27", "suite": "cmmlu", "sha": "d49b3b0b91d61786", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.45}
+{"id": "cmmlu:28", "suite": "cmmlu", "sha": "c4eac67f816a459b", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.85}
+{"id": "cmmlu:29", "suite": "cmmlu", "sha": "8229271187307d40", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.81}
+{"id": "cmmlu:30", "suite": "cmmlu", "sha": "0b07ea671ab6c3ee", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 0.99}
+{"id": "cmmlu:31", "suite": "cmmlu", "sha": "f8572007727e0437", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 6, "wall": 1.36}
+{"id": "cmmlu:32", "suite": "cmmlu", "sha": "03f7028be4d5ea14", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.36}
+{"id": "cmmlu:33", "suite": "cmmlu", "sha": "c38e1899e8550890", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 12, "wall": 2.31}
+{"id": "cmmlu:34", "suite": "cmmlu", "sha": "865ccddc8659f3b3", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.36}
+{"id": "cmmlu:35", "suite": "cmmlu", "sha": "8c84ee727d87d31b", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.53}
+{"id": "cmmlu:36", "suite": "cmmlu", "sha": "94aa314750b4b849", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.99}
+{"id": "cmmlu:37", "suite": "cmmlu", "sha": "c62687e9a837c9ba", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.38}
+{"id": "cmmlu:38", "suite": "cmmlu", "sha": "5e27595959664c7a", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.85}
+{"id": "cmmlu:39", "suite": "cmmlu", "sha": "130fffca37b38830", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.02}
+{"id": "cmmlu:40", "suite": "cmmlu", "sha": "376b7c7e6f95003f", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 2.12}
+{"id": "cmmlu:41", "suite": "cmmlu", "sha": "3a7fbb635034473e", "correct": false, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 2.13}
+{"id": "cmmlu:42", "suite": "cmmlu", "sha": "d98e4ce0f5caf4f1", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.96}
+{"id": "cmmlu:43", "suite": "cmmlu", "sha": "9240b8ac0a9abcec", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.74}
+{"id": "cmmlu:44", "suite": "cmmlu", "sha": "08ea64a9c5c94f36", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.6}
+{"id": "cmmlu:45", "suite": "cmmlu", "sha": "aa52ff3d08ccf573", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.64}
+{"id": "cmmlu:46", "suite": "cmmlu", "sha": "cddc9d980e4f05b9", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.66}
+{"id": "cmmlu:47", "suite": "cmmlu", "sha": "c534a124315e9b72", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 6, "wall": 1.85}
+{"id": "cmmlu:48", "suite": "cmmlu", "sha": "7321914788880614", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.84}
+{"id": "cmmlu:49", "suite": "cmmlu", "sha": "e6082f88d18f6cf7", "correct": false, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.83}
+{"id": "truthfulqa:654", "suite": "truthfulqa", "sha": "45023a2c2d439e26", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.84}
+{"id": "truthfulqa:114", "suite": "truthfulqa", "sha": "0fe1e89c75c0f427", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.67}
+{"id": "truthfulqa:25", "suite": "truthfulqa", "sha": "8cf482f35f492b40", "correct": true, "pred": "F", "finish": "stop", "completion_tokens": 1, "wall": 1.68}
+{"id": "truthfulqa:759", "suite": "truthfulqa", "sha": "7ebfee945826fe80", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.7}
+{"id": "truthfulqa:281", "suite": "truthfulqa", "sha": "eea924fd8561db44", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.7}
+{"id": "truthfulqa:250", "suite": "truthfulqa", "sha": "63a4af5972360e39", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "truthfulqa:228", "suite": "truthfulqa", "sha": "d278ee53fe683c34", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.65}
+{"id": "truthfulqa:142", "suite": "truthfulqa", "sha": "c2d93fd53f297213", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.63}
+{"id": "truthfulqa:754", "suite": "truthfulqa", "sha": "8bf2154ec5b34cf5", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.62}
+{"id": "truthfulqa:104", "suite": "truthfulqa", "sha": "7235b753b21710da", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.65}
+{"id": "truthfulqa:692", "suite": "truthfulqa", "sha": "225288f4eaf3f7c5", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "truthfulqa:758", "suite": "truthfulqa", "sha": "22f0fa0ee7ac6e79", "correct": true, "pred": "F", "finish": "stop", "completion_tokens": 1, "wall": 1.67}
+{"id": "truthfulqa:558", "suite": "truthfulqa", "sha": "45a781e03a217337", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "truthfulqa:89", "suite": "truthfulqa", "sha": "987010ee02465b15", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.7}
+{"id": "truthfulqa:604", "suite": "truthfulqa", "sha": "a112f5d7b3f29fe7", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.68}
+{"id": "truthfulqa:432", "suite": "truthfulqa", "sha": "74471f286c12b0ea", "correct": true, "pred": "E", "finish": "stop", "completion_tokens": 1, "wall": 1.77}
+{"id": "truthfulqa:32", "suite": "truthfulqa", "sha": "7de757773be0df6d", "correct": true, "pred": "F", "finish": "stop", "completion_tokens": 1, "wall": 1.76}
+{"id": "truthfulqa:30", "suite": "truthfulqa", "sha": "e142c794693e5cc2", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.78}
+{"id": "truthfulqa:95", "suite": "truthfulqa", "sha": "7af946b7fa1256b9", "correct": true, "pred": "F", "finish": "stop", "completion_tokens": 1, "wall": 1.79}
+{"id": "truthfulqa:223", "suite": "truthfulqa", "sha": "6b85ad32bde9dc4e", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:238", "suite": "truthfulqa", "sha": "696db1295c4ce628", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:517", "suite": "truthfulqa", "sha": "81a86b2fd8630ca4", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.62}
+{"id": "truthfulqa:616", "suite": "truthfulqa", "sha": "7e0e81ab7134fd34", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.6}
+{"id": "truthfulqa:27", "suite": "truthfulqa", "sha": "752cdcdabae0e4f2", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.62}
+{"id": "truthfulqa:574", "suite": "truthfulqa", "sha": "1f39cd0261521988", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.63}
+{"id": "truthfulqa:203", "suite": "truthfulqa", "sha": "e01d991cabe5a290", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.68}
+{"id": "truthfulqa:733", "suite": "truthfulqa", "sha": "063188a5dd9e9e9e", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.68}
+{"id": "truthfulqa:665", "suite": "truthfulqa", "sha": "1ff8de3000456e16", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.67}
+{"id": "truthfulqa:718", "suite": "truthfulqa", "sha": "c0d06d93dcec98bd", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.63}
+{"id": "truthfulqa:429", "suite": "truthfulqa", "sha": "4bb233dcb5fc1878", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.59}
+{"id": "truthfulqa:225", "suite": "truthfulqa", "sha": "2042e353920d12c6", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.6}
+{"id": "truthfulqa:459", "suite": "truthfulqa", "sha": "843ef12510132ea2", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.65}
+{"id": "truthfulqa:603", "suite": "truthfulqa", "sha": "76ea5c5347862416", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "truthfulqa:284", "suite": "truthfulqa", "sha": "81d76b2f2181b07a", "correct": true, "pred": "G", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:6", "suite": "truthfulqa", "sha": "72ec99e760e1351d", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.69}
+{"id": "truthfulqa:777", "suite": "truthfulqa", "sha": "02a2bc49f3d10281", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.64}
+{"id": "truthfulqa:163", "suite": "truthfulqa", "sha": "26e94a96774855fd", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.62}
+{"id": "truthfulqa:714", "suite": "truthfulqa", "sha": "3be06f0e47b25429", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.64}
+{"id": "truthfulqa:348", "suite": "truthfulqa", "sha": "8a36790f3e3720f7", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.68}
+{"id": "truthfulqa:159", "suite": "truthfulqa", "sha": "ce6fd4ab073b5358", "correct": true, "pred": "F", "finish": "stop", "completion_tokens": 1, "wall": 1.68}
+{"id": "truthfulqa:220", "suite": "truthfulqa", "sha": "2175acef8220b9e3", "correct": false, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:781", "suite": "truthfulqa", "sha": "7d66a7f891db652d", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.74}
+{"id": "truthfulqa:344", "suite": "truthfulqa", "sha": "db3ddbe1e1f1b076", "correct": true, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.74}
+{"id": "truthfulqa:94", "suite": "truthfulqa", "sha": "53ce7e3c1b15eb20", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.75}
+{"id": "truthfulqa:389", "suite": "truthfulqa", "sha": "0794af9e6cb670d1", "correct": true, "pred": "C", "finish": "stop", "completion_tokens": 1, "wall": 1.74}
+{"id": "truthfulqa:99", "suite": "truthfulqa", "sha": "763345bc433a8c51", "correct": true, "pred": "D", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:367", "suite": "truthfulqa", "sha": "b5e142bfd197c01c", "correct": false, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:352", "suite": "truthfulqa", "sha": "1c731dd510a3c4eb", "correct": true, "pred": "B", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:618", "suite": "truthfulqa", "sha": "f2838d0ada26c31c", "correct": true, "pred": "F", "finish": "stop", "completion_tokens": 1, "wall": 1.71}
+{"id": "truthfulqa:270", "suite": "truthfulqa", "sha": "d8336a8b3b94546e", "correct": false, "pred": "A", "finish": "stop", "completion_tokens": 1, "wall": 1.89}
+{"id": "gsm8k:1309", "suite": "gsm8k", "sha": "1756d0b9076fb265", "correct": false, "pred": "2180", "finish": "stop", "completion_tokens": 87, "wall": 6.81}
+{"id": "gsm8k:228", "suite": "gsm8k", "sha": "b85eef843384dc80", "correct": true, "pred": "1", "finish": "stop", "completion_tokens": 85, "wall": 5.38}
+{"id": "gsm8k:51", "suite": "gsm8k", "sha": "1edd7d50c7f7bb42", "correct": true, "pred": "5", "finish": "stop", "completion_tokens": 62, "wall": 4.09}
+{"id": "gsm8k:563", "suite": "gsm8k", "sha": "a85446e5dc3db048", "correct": true, "pred": "12", "finish": "stop", "completion_tokens": 82, "wall": 6.27}
+{"id": "gsm8k:501", "suite": "gsm8k", "sha": "739906c1c88ea5ae", "correct": true, "pred": "273", "finish": "stop", "completion_tokens": 82, "wall": 4.63}
+{"id": "gsm8k:457", "suite": "gsm8k", "sha": "4c1a3c1ef3908edc", "correct": true, "pred": "45", "finish": "stop", "completion_tokens": 69, "wall": 3.76}
+{"id": "gsm8k:285", "suite": "gsm8k", "sha": "b2734e2143f5e4a6", "correct": true, "pred": "21", "finish": "stop", "completion_tokens": 52, "wall": 2.62}
+{"id": "gsm8k:209", "suite": "gsm8k", "sha": "5ca7c242a2f28202", "correct": true, "pred": "145", "finish": "stop", "completion_tokens": 112, "wall": 6.11}
+{"id": "gsm8k:1116", "suite": "gsm8k", "sha": "2666f0c4adf57541", "correct": true, "pred": "60", "finish": "stop", "completion_tokens": 53, "wall": 3.4}
+{"id": "gsm8k:178", "suite": "gsm8k", "sha": "6509e1136554116c", "correct": true, "pred": "122", "finish": "stop", "completion_tokens": 93, "wall": 5.82}
+{"id": "gsm8k:1209", "suite": "gsm8k", "sha": "9d103c2f93568191", "correct": true, "pred": "29", "finish": "stop", "completion_tokens": 131, "wall": 8.5}
+{"id": "gsm8k:864", "suite": "gsm8k", "sha": "ec909aa333563ef2", "correct": true, "pred": "80", "finish": "stop", "completion_tokens": 64, "wall": 3.89}
+{"id": "gsm8k:65", "suite": "gsm8k", "sha": "6e714139695955f3", "correct": true, "pred": "36", "finish": "stop", "completion_tokens": 80, "wall": 4.41}
+{"id": "gsm8k:61", "suite": "gsm8k", "sha": "39318ca69e4c095b", "correct": true, "pred": "1430", "finish": "stop", "completion_tokens": 90, "wall": 5.59}
+{"id": "gsm8k:191", "suite": "gsm8k", "sha": "1decda8e0acf40bf", "correct": true, "pred": "5", "finish": "stop", "completion_tokens": 46, "wall": 3.09}
+{"id": "gsm8k:447", "suite": "gsm8k", "sha": "1805e792862aa9e4", "correct": true, "pred": "5", "finish": "stop", "completion_tokens": 84, "wall": 5.28}
+{"id": "gsm8k:476", "suite": "gsm8k", "sha": "a4a28bedc7e8f8ba", "correct": true, "pred": "5", "finish": "stop", "completion_tokens": 57, "wall": 4.25}
+{"id": "gsm8k:1034", "suite": "gsm8k", "sha": "9a40d9c7f1cb8b58", "correct": true, "pred": "66", "finish": "stop", "completion_tokens": 61, "wall": 3.62}
+{"id": "gsm8k:1232", "suite": "gsm8k", "sha": "61782371e3488581", "correct": true, "pred": "15", "finish": "stop", "completion_tokens": 60, "wall": 4.35}
+{"id": "gsm8k:54", "suite": "gsm8k", "sha": "f708a0c6834b30c5", "correct": true, "pred": "40", "finish": "stop", "completion_tokens": 65, "wall": 4.33}
+{"id": "gsm8k:1149", "suite": "gsm8k", "sha": "f5b16466be4ee85e", "correct": true, "pred": "93", "finish": "stop", "completion_tokens": 53, "wall": 3.35}
+{"id": "gsm8k:407", "suite": "gsm8k", "sha": "78786fdad8538728", "correct": true, "pred": "2000", "finish": "stop", "completion_tokens": 164, "wall": 9.52}
+{"id": "gsm8k:859", "suite": "gsm8k", "sha": "31e8da0dd948c07b", "correct": true, "pred": "1520", "finish": "stop", "completion_tokens": 106, "wall": 5.53}
+{"id": "gsm8k:451", "suite": "gsm8k", "sha": "3aff234956f8fcec", "correct": true, "pred": "11050", "finish": "stop", "completion_tokens": 68, "wall": 2.93}
+{"id": "gsm8k:919", "suite": "gsm8k", "sha": "13edf7480926727f", "correct": true, "pred": "90", "finish": "stop", "completion_tokens": 82, "wall": 4.95}
+{"id": "gsm8k:1206", "suite": "gsm8k", "sha": "84c5cef274621024", "correct": true, "pred": "40000", "finish": "stop", "completion_tokens": 119, "wall": 6.41}
+{"id": "gsm8k:569", "suite": "gsm8k", "sha": "184f920eaae96565", "correct": true, "pred": "21", "finish": "stop", "completion_tokens": 54, "wall": 3.5}
+{"id": "gsm8k:13", "suite": "gsm8k", "sha": "c434620315937cb9", "correct": true, "pred": "18", "finish": "stop", "completion_tokens": 226, "wall": 10.37}
+{"id": "gsm8k:326", "suite": "gsm8k", "sha": "d4a3e9ae2a731f6f", "correct": true, "pred": "14", "finish": "stop", "completion_tokens": 87, "wall": 4.46}
+{"id": "gsm8k:865", "suite": "gsm8k", "sha": "b3430bc881f246a3", "correct": true, "pred": "23", "finish": "stop", "completion_tokens": 81, "wall": 4.27}
+{"id": "gsm8k:696", "suite": "gsm8k", "sha": "ebc3eac49967bd5e", "correct": true, "pred": "145", "finish": "stop", "completion_tokens": 130, "wall": 6.26}
+{"id": "gsm8k:318", "suite": "gsm8k", "sha": "5f1694bf4650ba20", "correct": true, "pred": "123", "finish": "stop", "completion_tokens": 79, "wall": 3.42}
+{"id": "gsm8k:440", "suite": "gsm8k", "sha": "1fa6b2202c6fcbaf", "correct": true, "pred": "98", "finish": "stop", "completion_tokens": 78, "wall": 3.51}
+{"id": "gsm8k:689", "suite": "gsm8k", "sha": "d82ec6ab8b6256eb", "correct": true, "pred": "7", "finish": "stop", "completion_tokens": 158, "wall": 8.49}
+{"id": "gsm8k:189", "suite": "gsm8k", "sha": "647ff0e291879470", "correct": true, "pred": "34", "finish": "stop", "completion_tokens": 98, "wall": 4.27}
+{"id": "gsm8k:778", "suite": "gsm8k", "sha": "c15522b709c830e2", "correct": true, "pred": "38", "finish": "stop", "completion_tokens": 91, "wall": 4.33}
+{"id": "gsm8k:198", "suite": "gsm8k", "sha": "76e6b7d38496bff9", "correct": true, "pred": "320", "finish": "stop", "completion_tokens": 109, "wall": 6.14}
+{"id": "gsm8k:735", "suite": "gsm8k", "sha": "d420690e1cb9bc2b", "correct": true, "pred": "50", "finish": "stop", "completion_tokens": 88, "wall": 4.63}
+{"id": "gsm8k:704", "suite": "gsm8k", "sha": "a3e127df92cce05e", "correct": true, "pred": "50", "finish": "stop", "completion_tokens": 78, "wall": 5.48}
+{"id": "gsm8k:1236", "suite": "gsm8k", "sha": "aef74a488a21e709", "correct": true, "pred": "84", "finish": "stop", "completion_tokens": 76, "wall": 4.67}
+{"id": "gsm8k:541", "suite": "gsm8k", "sha": "00caedf51d75b097", "correct": true, "pred": "50", "finish": "stop", "completion_tokens": 193, "wall": 9.04}
+{"id": "gsm8k:88", "suite": "gsm8k", "sha": "7dddc7720e024a65", "correct": true, "pred": "8000", "finish": "stop", "completion_tokens": 72, "wall": 4.56}
+{"id": "gsm8k:940", "suite": "gsm8k", "sha": "18142f3b41dfde98", "correct": true, "pred": "280", "finish": "stop", "completion_tokens": 50, "wall": 2.68}
+{"id": "gsm8k:1098", "suite": "gsm8k", "sha": "cc82917e8516d15d", "correct": true, "pred": "30", "finish": "stop", "completion_tokens": 58, "wall": 3.43}
+{"id": "gsm8k:255", "suite": "gsm8k", "sha": "69bfbfc1babacadc", "correct": true, "pred": "192", "finish": "stop", "completion_tokens": 105, "wall": 5.34}
+{"id": "gsm8k:775", "suite": "gsm8k", "sha": "308a58d42fdc8f07", "correct": true, "pred": "276", "finish": "stop", "completion_tokens": 87, "wall": 4.16}
+{"id": "gsm8k:161", "suite": "gsm8k", "sha": "c9a89c7cdf7a70c7", "correct": true, "pred": "32", "finish": "stop", "completion_tokens": 119, "wall": 5.65}
+{"id": "gsm8k:1130", "suite": "gsm8k", "sha": "41d5c30da6af347c", "correct": true, "pred": "25", "finish": "stop", "completion_tokens": 117, "wall": 5.99}
+{"id": "gsm8k:600", "suite": "gsm8k", "sha": "239559219225a2af", "correct": true, "pred": "10", "finish": "stop", "completion_tokens": 58, "wall": 3.43}
+{"id": "gsm8k:1287", "suite": "gsm8k", "sha": "1c46e9c419f25afb", "correct": true, "pred": "84", "finish": "stop", "completion_tokens": 79, "wall": 4.61}
+{"id": "humaneval:HumanEval/163", "suite": "humaneval", "sha": "7a752e43d953b9cd", "correct": false, "pred": "def generate_integers(a, b):\n    \"\"\"\n    Given two positive integers a and b, return the even digits between a\n    and b, in ascending order.\n\n    For example:\n    generate_integers(2, 8) => [2, 4, 6,", "finish": "stop", "completion_tokens": 153, "wall": 6.03}
+{"id": "humaneval:HumanEval/28", "suite": "humaneval", "sha": "f915590f9dcc1c5f", "correct": true, "pred": "from typing import List\n\ndef concatenate(strings: List[str]) -> str:\n    \"\"\" Concatenate list of strings into a single string\n    >>> concatenate([])\n    ''\n    >>> concatenate(['a', 'b', 'c'])\n    'a", "finish": "stop", "completion_tokens": 64, "wall": 3.17}
+{"id": "humaneval:HumanEval/6", "suite": "humaneval", "sha": "ef8c6962ab9419c2", "correct": true, "pred": "from typing import List\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n   ", "finish": "stop", "completion_tokens": 194, "wall": 6.76}
+{"id": "humaneval:HumanEval/70", "suite": "humaneval", "sha": "1808342d6212db1f", "correct": true, "pred": "def strange_sort_list(lst):\n    '''\n    Given list of integers, return list in strange order.\n    Strange sorting, is when you start with the minimum value,\n    then maximum of the remaining integers,", "finish": "stop", "completion_tokens": 216, "wall": 7.62}
+{"id": "humaneval:HumanEval/62", "suite": "humaneval", "sha": "2562bc6ef78d99f5", "correct": true, "pred": "def derivative(xs: list):\n    \"\"\" xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\n    >>> derivative([", "finish": "stop", "completion_tokens": 135, "wall": 3.96}
+{"id": "humaneval:HumanEval/57", "suite": "humaneval", "sha": "6ce5cbb2aa130e21", "correct": true, "pred": "def monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> mo", "finish": "stop", "completion_tokens": 167, "wall": 5.55}
+{"id": "humaneval:HumanEval/35", "suite": "humaneval", "sha": "53dfaa18bdf878d1", "correct": true, "pred": "def max_element(l: list):\n    \"\"\"Return maximum element in the list.\n    >>> max_element([1, 2, 3])\n    3\n    >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])\n    123\n    \"\"\"\n    return max(l)", "finish": "stop", "completion_tokens": 96, "wall": 4.17}
+{"id": "humaneval:HumanEval/26", "suite": "humaneval", "sha": "c26ba7d686db2ef0", "correct": true, "pred": "from typing import List\n\n\ndef remove_duplicates(numbers: List[int]) -> List[int]:\n    \"\"\" From a list of integers, remove all elements that occur more than once.\n    Keep order of elements left the sa", "finish": "stop", "completion_tokens": 133, "wall": 4.93}
+{"id": "humaneval:HumanEval/139", "suite": "humaneval", "sha": "e85a4f528cacfe3d", "correct": true, "pred": "def special_factorial(n):\n    \"\"\"The Brazilian factorial is defined as:\n    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!\n    where n > 0\n\n    For example:\n    >>> special_factorial(4)\n    ", "finish": "stop", "completion_tokens": 139, "wall": 5.18}
+{"id": "humaneval:HumanEval/22", "suite": "humaneval", "sha": "482e6e71645a1d1d", "correct": true, "pred": "from typing import List, Any\n\ndef filter_integers(values: List[Any]) -> List[int]:\n    \"\"\" Filter given list of any python values only for integers\n    >>> filter_integers(['a', 3.14, 5])\n    [5]\n    ", "finish": "stop", "completion_tokens": 111, "wall": 4.55}
+{"id": "humaneval:HumanEval/151", "suite": "humaneval", "sha": "b492a02b16cceb48", "correct": true, "pred": "def double_the_difference(lst):\n    '''\n    Given a list of numbers, return the sum of squares of the numbers\n    in the list that are odd. Ignore numbers that are negative or not integers.\n    \n    d", "finish": "stop", "completion_tokens": 167, "wall": 5.76}
+{"id": "humaneval:HumanEval/108", "suite": "humaneval", "sha": "bccec215a18e35f9", "correct": true, "pred": "def count_nums(arr):\n    \"\"\"\n    Write a function count_nums which takes an array of integers and returns\n    the number of elements which has a sum of digits > 0.\n    If a number is negative, then it", "finish": "stop", "completion_tokens": 210, "wall": 8.2}
+{"id": "humaneval:HumanEval/8", "suite": "humaneval", "sha": "a4531751e43fadfd", "correct": true, "pred": "from typing import List, Tuple\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a ", "finish": "stop", "completion_tokens": 149, "wall": 5.24}
+{"id": "humaneval:HumanEval/7", "suite": "humaneval", "sha": "1052029d709deb58", "correct": true, "pred": "from typing import List\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\" Filter an input list of strings only for ones that contain given substring\n    >>> filter_by_", "finish": "stop", "completion_tokens": 106, "wall": 3.34}
+{"id": "humaneval:HumanEval/23", "suite": "humaneval", "sha": "d925c8937c03cf7e", "correct": true, "pred": "def strlen(string: str) -> int:\n    \"\"\" Return length of given string\n    >>> strlen('')\n    0\n    >>> strlen('abc')\n    3\n    \"\"\"\n    return len(string)", "finish": "stop", "completion_tokens": 52, "wall": 2.26}
+{"id": "humaneval:HumanEval/55", "suite": "humaneval", "sha": "cc65fcd6632b66a9", "correct": true, "pred": "def fib(n: int):\n    \"\"\"Return n-th Fibonacci number.\n    >>> fib(10)\n    55\n    >>> fib(1)\n    1\n    >>> fib(8)\n    21\n    \"\"\"\n    if n <= 0:\n        return 0\n    a, b = 0, 1\n    for _ in range(n):\n ", "finish": "stop", "completion_tokens": 101, "wall": 4.56}
+{"id": "humaneval:HumanEval/59", "suite": "humaneval", "sha": "57b511f82caf5e92", "correct": true, "pred": "def largest_prime_factor(n: int):\n    \"\"\"Return the largest prime factor of n. Assume n > 1 and is not a prime.\n    >>> largest_prime_factor(13195)\n    29\n    >>> largest_prime_factor(2048)\n    2\n    ", "finish": "stop", "completion_tokens": 153, "wall": 5.85}
+{"id": "humaneval:HumanEval/129", "suite": "humaneval", "sha": "c08220cd115e447a", "correct": false, "pred": "    from any cell, and in each step you can move to any of the neighbor cells,\n\ndef minPath(grid, k):\n    N = len(grid)\n    pos = {}\n    for i in range(N):\n        for j in range(N):\n            pos[g", "finish": "stop", "completion_tokens": 364, "wall": 17.37}
+{"id": "humaneval:HumanEval/154", "suite": "humaneval", "sha": "d50daf07e04115f0", "correct": true, "pred": "def cycpattern_check(a, b):\n    if len(b) > len(a):\n        return False\n    rotations = [b[i:] + b[:i] for i in range(len(b))]\n    return any(rot in a for rot in rotations)", "finish": "stop", "completion_tokens": 59, "wall": 2.01}
+{"id": "humaneval:HumanEval/143", "suite": "humaneval", "sha": "dfc0bd087fd30cc0", "correct": true, "pred": "def words_in_sentence(sentence):\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n ** 0.5) + 1):\n            if n % i == 0:\n                return False\n ", "finish": "stop", "completion_tokens": 88, "wall": 4.03}
+{"id": "mbpp:338", "suite": "mbpp", "sha": "dca3fcf7bbe6df1f", "correct": true, "pred": "def count_Substring_With_Equal_Ends(s):\n    from collections import Counter\n    counts = Counter(s)\n    return sum(c * (c + 1) // 2 for c in counts.values())", "finish": "stop", "completion_tokens": 51, "wall": 2.84}
+{"id": "mbpp:68", "suite": "mbpp", "sha": "eedb9edc210ae4f5", "correct": true, "pred": "def is_Monotonic(arr):\n    increasing = decreasing = True\n    for i in range(1, len(arr)):\n        if arr[i] > arr[i - 1]:\n            decreasing = False\n        if arr[i] < arr[i - 1]:\n            in", "finish": "stop", "completion_tokens": 74, "wall": 3.81}
+{"id": "mbpp:23", "suite": "mbpp", "sha": "dabd4bd822ef86a7", "correct": true, "pred": "def maximum_Sum(lst):\n    return max(sum(sublist) for sublist in lst)", "finish": "stop", "completion_tokens": 24, "wall": 1.89}
+{"id": "mbpp:390", "suite": "mbpp", "sha": "db95a9807aef3a48", "correct": true, "pred": "def add_string(lst, fmt):\n    return [fmt.format(item) for item in lst]", "finish": "stop", "completion_tokens": 25, "wall": 1.83}
+{"id": "mbpp:151", "suite": "mbpp", "sha": "ecd696acb745fc52", "correct": true, "pred": "from math import gcd\n\ndef is_coprime(a, b):\n    return gcd(a, b) == 1", "finish": "stop", "completion_tokens": 30, "wall": 1.76}
+{"id": "mbpp:136", "suite": "mbpp", "sha": "cba240550e2d4d85", "correct": false, "pred": "def cal_electbill(units):\n    bill = 0\n    if units <= 200:\n        bill = units * 0.83\n    elif units <= 400:\n        bill = 200 * 0.83 + (units - 200) * 0.92\n    else:\n        bill = 200 * 0.83 + 20", "finish": "stop", "completion_tokens": 132, "wall": 6.5}
+{"id": "mbpp:125", "suite": "mbpp", "sha": "751e3311b84cf7ef", "correct": true, "pred": "def find_length(s, n):\n    max_diff = 0\n    cur = 0\n    for i in range(n):\n        if s[i] == '0':\n            cur += 1\n        else:\n            cur -= 1\n        if cur > max_diff:\n            max_di", "finish": "stop", "completion_tokens": 92, "wall": 4.07}
+{"id": "mbpp:82", "suite": "mbpp", "sha": "c474e9cda01cb283", "correct": true, "pred": "import math\n\ndef volume_sphere(r):\n    return 4 / 3 * math.pi * r ** 3", "finish": "stop", "completion_tokens": 29, "wall": 1.96}
+{"id": "mbpp:388", "suite": "mbpp", "sha": "5e46fc061f161943", "correct": true, "pred": "def highest_Power_of_2(n):\n    return 2 ** (n.bit_length() - 1)", "finish": "stop", "completion_tokens": 29, "wall": 1.29}
+{"id": "mbpp:63", "suite": "mbpp", "sha": "40ea17e56ea12aa4", "correct": false, "pred": "def max_difference(pairs):\n    return max(b - a for a, b in pairs)", "finish": "stop", "completion_tokens": 25, "wall": 1.64}
+{"id": "mbpp:357", "suite": "mbpp", "sha": "afe01aee769cc09b", "correct": true, "pred": "def find_max(tuples):\n    return max(max(t) for t in tuples)", "finish": "stop", "completion_tokens": 23, "wall": 2.2}
+{"id": "mbpp:467", "suite": "mbpp", "sha": "404e649765360249", "correct": true, "pred": "def decimal_to_Octal(n):\n    return int(oct(n)[2:])", "finish": "stop", "completion_tokens": 22, "wall": 2.12}
+{"id": "mbpp:290", "suite": "mbpp", "sha": "79569e42328a562b", "correct": true, "pred": "def max_length(lst):\n    return max((len(x), x) for x in lst)", "finish": "stop", "completion_tokens": 25, "wall": 2.02}
+{"id": "mbpp:55", "suite": "mbpp", "sha": "02bf838646897ab3", "correct": false, "pred": "def tn_gp(a, r, n):\n    return a * r ** (n - 1)", "finish": "stop", "completion_tokens": 27, "wall": 3.15}
+{"id": "mbpp:313", "suite": "mbpp", "sha": "d1202edb3d6be727", "correct": false, "pred": "def pos_nos(lst):\n    return [x for x in lst if x > 0]", "finish": "stop", "completion_tokens": 26, "wall": 2.15}
+{"id": "mbpp:227", "suite": "mbpp", "sha": "bd79ec1eef64dd72", "correct": true, "pred": "def min_of_three(a, b, c):\n    return min(a, b, c)", "finish": "stop", "completion_tokens": 25, "wall": 3.08}
+{"id": "mbpp:27", "suite": "mbpp", "sha": "c40ade973e682898", "correct": true, "pred": "import re\n\ndef remove(lst):\n    return [re.sub(r'\\d', '', s) for s in lst]", "finish": "stop", "completion_tokens": 30, "wall": 3.14}
+{"id": "mbpp:26", "suite": "mbpp", "sha": "e21d7596dc0732a8", "correct": false, "pred": "def check_k_elements(test_list, k):\n    return all(len(t) == k for t in test_list)", "finish": "stop", "completion_tokens": 29, "wall": 2.72}
+{"id": "mbpp:58", "suite": "mbpp", "sha": "a4219f26bb9a224d", "correct": true, "pred": "def opposite_Signs(a, b):\n    return (a < 0) != (b < 0)", "finish": "stop", "completion_tokens": 30, "wall": 3.16}
+{"id": "mbpp:122", "suite": "mbpp", "sha": "6e12c617cc9b42eb", "correct": false, "pred": "def smartNumber(n):\n    def isSmartNumber(num):\n        divisors_sum = sum(i for i in range(1, num + 1) if num % i == 0)\n        return divisors_sum - num == num\n    \n    val = 1\n    while not isSmart", "finish": "stop", "completion_tokens": 81, "wall": 5.38}
+{"id": "mbpp:130", "suite": "mbpp", "sha": "040570e3355246b0", "correct": true, "pred": "from collections import Counter\n\ndef max_occurrences(lst):\n    counts = Counter(lst)\n    return max(counts.items(), key=lambda x: x[1])", "finish": "stop", "completion_tokens": 39, "wall": 2.45}
+{"id": "mbpp:269", "suite": "mbpp", "sha": "fe55e23fcd522ce4", "correct": true, "pred": "def ascii_value(char):\n    return ord(char)", "finish": "stop", "completion_tokens": 16, "wall": 1.43}
+{"id": "mbpp:319", "suite": "mbpp", "sha": "c1ad0a0d7ed719b7", "correct": true, "pred": "import re\n\ndef find_long_word(s):\n    return re.findall(r'\\b\\w{5}\\b', s)", "finish": "stop", "completion_tokens": 31, "wall": 2.37}
+{"id": "mbpp:24", "suite": "mbpp", "sha": "a1e2cd0e17d6bde2", "correct": true, "pred": "def binary_to_decimal(binary):\n    decimal = 0\n    position = 0\n    while binary > 0:\n        digit = binary % 10\n        decimal += digit * (2 ** position)\n        binary //= 10\n        position += 1", "finish": "stop", "completion_tokens": 68, "wall": 4.32}
+{"id": "mbpp:298", "suite": "mbpp", "sha": "561c36585a7e8eae", "correct": true, "pred": "def intersection_nested_lists(l1, l2):\n    result = []\n    for element in l2:\n        if isinstance(element, list):\n            result.append([value for value in element if value in l1])\n        else:", "finish": "stop", "completion_tokens": 66, "wall": 4.72}
+{"id": "mbpp:112", "suite": "mbpp", "sha": "7dd7d5d9d098ba58", "correct": false, "pred": "def perimeter(r, h):\n    return 4 * r + 2 * h", "finish": "stop", "completion_tokens": 23, "wall": 1.7}
+{"id": "mbpp:377", "suite": "mbpp", "sha": "77557ab177b174ad", "correct": true, "pred": "def remove_Char(s, char):\n    return s.replace(char, '')", "finish": "stop", "completion_tokens": 20, "wall": 1.65}
+{"id": "mbpp:343", "suite": "mbpp", "sha": "c7958b343e7bddb7", "correct": true, "pred": "def dig_let(s):\n    digits = sum(c.isdigit() for c in s)\n    letters = sum(c.isalpha() for c in s)\n    return (letters, digits)", "finish": "stop", "completion_tokens": 46, "wall": 3.45}
+{"id": "mbpp:370", "suite": "mbpp", "sha": "9eaea7a067885fe0", "correct": true, "pred": "def float_sort(tuples):\n    return sorted(tuples, key=lambda x: float(x[1]), reverse=True)", "finish": "stop", "completion_tokens": 30, "wall": 2.49}
+{"id": "mbpp:225", "suite": "mbpp", "sha": "f5f07cbaed10d2bc", "correct": false, "pred": "def find_Min(arr, low, high):\n    if high < low:\n        return arr[0]\n    if high == low:\n        return arr[low]\n    mid = low + (high - low) // 2\n    if mid < high and arr[mid] > arr[mid + 1]:\n    ", "finish": "stop", "completion_tokens": 163, "wall": 8.6}
+{"id": "livecodebench:abc308_b", "suite": "livecodebench", "sha": "94de916cb007e50d", "correct": true, "pred": "N, M = map(int, input().split())\nC = input().split()\nD = input().split()\nP = list(map(int, input().split()))\nP0 = P[0]\nprices = dict(zip(D, P[1:]))\ntotal = 0\nfor c in C:\n    total += prices.get(c, P0)", "finish": "stop", "completion_tokens": 87, "wall": 4.41}
+{"id": "livecodebench:2857", "suite": "livecodebench", "sha": "c7c239c96bebb1e4", "correct": false, "pred": "mainTank, additionalTank = map(int, input().split())\ndistance = 0\nwhile mainTank >= 5 and additionalTank > 0:\n    mainTank -= 5\n    additionalTank -= 1\n    mainTank += 1\n    distance += 50\ndistance +=", "finish": "stop", "completion_tokens": 78, "wall": 3.69}
+{"id": "livecodebench:3426", "suite": "livecodebench", "sha": "67c3f89ec57e1c9a", "correct": false, "pred": "s = input()\ncurrent = 0\nmax_chairs = 0\nfor c in s:\n    if c == 'E':\n        current += 1\n        max_chairs = max(max_chairs, current)\n    else:\n        current -= 1\nprint(max_chairs)", "finish": "stop", "completion_tokens": 70, "wall": 3.45}
+{"id": "livecodebench:3416", "suite": "livecodebench", "sha": "4c126d1111bec229", "correct": false, "pred": "import sys\nfrom collections import Counter\n\ndef main():\n    data = sys.stdin.read().split()\n    nums = [int(x) for x in data]\n    n = len(nums)\n    s = str(nums[0])\n    L = len(s)\n    total = 0\n    fo", "finish": "stop", "completion_tokens": 121, "wall": 5.73}
+{"id": "livecodebench:3351", "suite": "livecodebench", "sha": "cc9267d05043f80e", "correct": false, "pred": "import sys\n\ndef main():\n    data = sys.stdin.read().split()\n    n = int(data[0])\n    k = int(data[1])\n    happiness = [int(x) for x in data[2:2 + n]]\n    happiness.sort(reverse=True)\n    total = 0\n   ", "finish": "stop", "completion_tokens": 112, "wall": 5.03}
+{"id": "livecodebench:abc321_b", "suite": "livecodebench", "sha": "02f0c141d7c2250f", "correct": true, "pred": "N, X = map(int, input().split())\nA = list(map(int, input().split()))\nfor s in range(101):\n    S = sorted(A + [s])\n    if sum(S[1:-1]) >= X:\n        print(s)\n        break\nelse:\n    print(-1)", "finish": "stop", "completion_tokens": 77, "wall": 5.58}
+{"id": "livecodebench:abc304_c", "suite": "livecodebench", "sha": "f2532d21c220ea9d", "correct": true, "pred": "import sys\nfrom collections import deque\n\ndef main():\n    input = sys.stdin.readline\n    N, D = map(int, input().split())\n    XY = [tuple(map(int, input().split())) for _ in range(N)]\n    \n    adj = [", "finish": "stop", "completion_tokens": 259, "wall": 8.36}
+{"id": "livecodebench:3298", "suite": "livecodebench", "sha": "f0b7fc64ed30a51e", "correct": false, "pred": "import sys\nfrom collections import defaultdict\n\ndef main():\n    input = sys.stdin.read\n    data = input().split()\n    n = int(data[0])\n    nums = [int(x) for x in data[1:n+1]]\n    \n    count = default", "finish": "stop", "completion_tokens": 148, "wall": 5.06}
+{"id": "livecodebench:3690", "suite": "livecodebench", "sha": "176551514e45274d", "correct": false, "pred": "import sys\n\ndef solve():\n    input_data = sys.stdin.read().split()\n    s = input_data[0]\n    numOps = int(input_data[1])\n    n = len(s)\n    \n    # Count total 0s and 1s\n    zeros = s.count('0')\n    on", "finish": "stop", "completion_tokens": 243, "wall": 6.89}
+{"id": "livecodebench:2883", "suite": "livecodebench", "sha": "63db1d65b98cb925", "correct": false, "pred": "import sys\n\ndef main():\n    s = sys.stdin.readline().strip()\n    powers = set()\n    p = 1\n    while p <= 10**15:\n        powers.add(p)\n        p *= 5\n    n = len(s)\n    INF = float('inf')\n    dp = [IN", "finish": "stop", "completion_tokens": 205, "wall": 5.63}

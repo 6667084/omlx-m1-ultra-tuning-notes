@@ -1,0 +1,10 @@
+{"label": "code324-cybertiel-prod", "total": "242/324", "humaneval": "143/164", "mbpp": "78/100", "livecodebench": "21/60", "truncated": 1, "errors": 0}
+{"label": "code324-ct0929", "total": "247/324", "humaneval": "145/164", "mbpp": "79/100", "livecodebench": "23/60", "truncated": 0, "errors": 0}
+{"label": "code324-kat", "total": "265/324", "humaneval": "150/164", "mbpp": "87/100", "livecodebench": "28/60", "truncated": 0, "errors": 0}
+{"label": "code324-cybertiel-prod-r2", "total": "240/324", "humaneval": "142/164", "mbpp": "76/100", "livecodebench": "22/60", "truncated": 0, "errors": 0}
+{"label": "g260-prod", "total": "205/260", "mmlu": "31/50", "cmmlu": "38/50", "truthfulqa": "46/50", "gsm8k": "49/50", "humaneval": "15/20", "mbpp": "23/30", "livecodebench": "3/10", "truncated": 1, "errors": 0}
+{"label": "g260-kat", "total": "212/260", "mmlu": "32/50", "cmmlu": "39/50", "truthfulqa": "47/50", "gsm8k": "48/50", "humaneval": "17/20", "mbpp": "25/30", "livecodebench": "4/10", "truncated": 10, "errors": 0}
+{"label": "lcb60think-prod", "total": "40/60", "livecodebench": "40/60", "truncated": 4, "errors": 0}
+{"label": "lcb60think-kat", "total": "26/60", "livecodebench": "26/60", "truncated": 3, "errors": 0}
+{"label": "g260-ct0929", "total": "206/260", "mmlu": "32/50", "cmmlu": "37/50", "truthfulqa": "45/50", "gsm8k": "49/50", "humaneval": "18/20", "mbpp": "22/30", "livecodebench": "3/10", "truncated": 1, "errors": 0}
+{"label": "lcb60think-ct0929", "total": "38/60", "livecodebench": "38/60", "truncated": 7, "errors": 0}
