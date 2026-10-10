@@ -1,0 +1,9 @@
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "zh_explain", "round": 0, "completion_tokens": 512, "gen_tps": 188.6, "ttft": 0.08, "e2e": 2.8, "cached": 0, "ts": 1791597242.204271}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "code", "round": 0, "completion_tokens": 512, "gen_tps": 181.69, "ttft": 0.06, "e2e": 2.88, "cached": 0, "ts": 1791597245.0864909}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "reason", "round": 0, "completion_tokens": 512, "gen_tps": 178.54, "ttft": 0.07, "e2e": 2.94, "cached": 0, "ts": 1791597248.031326}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "zh_explain", "round": 1, "completion_tokens": 512, "gen_tps": 185.89, "ttft": 0.07, "e2e": 2.82, "cached": 0, "ts": 1791597250.8565052}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "code", "round": 1, "completion_tokens": 512, "gen_tps": 166.91, "ttft": 0.06, "e2e": 3.13, "cached": 0, "ts": 1791597253.990349}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "reason", "round": 1, "completion_tokens": 512, "gen_tps": 175.09, "ttft": 0.07, "e2e": 3.0, "cached": 0, "ts": 1791597256.989242}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "zh_explain", "round": 2, "completion_tokens": 512, "gen_tps": 176.79, "ttft": 0.06, "e2e": 2.97, "cached": 0, "ts": 1791597259.954644}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "code", "round": 2, "completion_tokens": 512, "gen_tps": 180.72, "ttft": 0.07, "e2e": 2.9, "cached": 0, "ts": 1791597262.858242}
+{"label": "audit-minicpm", "alias": "MiniCPM-V-4.6", "prompt": "reason", "round": 2, "completion_tokens": 512, "gen_tps": 179.83, "ttft": 0.07, "e2e": 2.92, "cached": 0, "ts": 1791597265.7771652}

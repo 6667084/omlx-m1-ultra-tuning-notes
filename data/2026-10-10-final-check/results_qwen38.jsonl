@@ -1,0 +1,9 @@
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "zh_explain", "round": 0, "completion_tokens": 512, "gen_tps": 42.35, "ttft": 0.59, "e2e": 12.68, "cached": 0, "ts": 1791597121.831142}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "code", "round": 0, "completion_tokens": 512, "gen_tps": 49.26, "ttft": 0.57, "e2e": 10.96, "cached": 0, "ts": 1791597132.795805}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "reason", "round": 0, "completion_tokens": 512, "gen_tps": 48.42, "ttft": 0.69, "e2e": 11.27, "cached": 0, "ts": 1791597144.067271}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "zh_explain", "round": 1, "completion_tokens": 512, "gen_tps": 43.01, "ttft": 0.58, "e2e": 12.49, "cached": 0, "ts": 1791597156.558391}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "code", "round": 1, "completion_tokens": 512, "gen_tps": 49.3, "ttft": 0.56, "e2e": 10.95, "cached": 0, "ts": 1791597167.511172}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "reason", "round": 1, "completion_tokens": 512, "gen_tps": 49.2, "ttft": 0.68, "e2e": 11.09, "cached": 0, "ts": 1791597178.6047602}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "zh_explain", "round": 2, "completion_tokens": 512, "gen_tps": 42.82, "ttft": 0.57, "e2e": 12.54, "cached": 0, "ts": 1791597191.140895}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "code", "round": 2, "completion_tokens": 512, "gen_tps": 48.69, "ttft": 0.56, "e2e": 11.08, "cached": 0, "ts": 1791597202.2229471}
+{"label": "audit-qwen38", "alias": "Qwen3.8-27B", "prompt": "reason", "round": 2, "completion_tokens": 512, "gen_tps": 46.21, "ttft": 0.72, "e2e": 11.8, "cached": 0, "ts": 1791597214.0264168}

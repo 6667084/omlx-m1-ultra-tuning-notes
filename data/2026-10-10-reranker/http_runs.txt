@@ -1,0 +1,49 @@
+# 真实服务(HTTP)运行记录 —— 原样摘录自终端输出（2026-10-10）。脚本：http_rr_check.py / http_n3.py / coresident_rr.py
+# 说明：「footprint」来自 `footprint -p <服务pid>`；同驻场景输出被取整到 1 GB，仅作粗略参考
+
+## 暂存 fp16（全 FP16，bge-reranker-v2-m3-fp16，单独运行）
+服务 pid=60782  模型=bge-reranker-v2-m3-fp16  当前已加载=[]  footprint(加载前)=0.98 GB
+[冷加载] 首个请求（含模型加载）1.84 s   footprint=2.07 GB   已加载=['bge-reranker-v2-m3-fp16']
+[一致性] 48 个请求 / 1874 对：与进程内引擎结果的最大|Δp| = fp16: 0.00e+00；fp32: 4.04e-04
+[延迟 24 篇] n=96  p50=419.3 ms  p95=438.2 ms  max=440.1 ms   footprint=2.07 GB
+[延迟 3 篇短文] p50=31.0 ms  p95=38.6 ms
+
+## 现役 FP32（别名 BGE-Reranker-V2-M3，单独运行）
+服务 pid=60782  模型=BGE-Reranker-V2-M3  当前已加载=[]  footprint(加载前)=0.98 GB
+[冷加载] 首个请求（含模型加载）1.84 s   footprint=3.15 GB   已加载=['bge-reranker-v2-m3']
+[一致性] 48 个请求 / 1874 对：与进程内引擎结果的最大|Δp| = fp32: 0.00e+00；fp16: 4.04e-04
+[延迟 24 篇] n=96  p50=413.2 ms  p95=431.4 ms  max=433.1 ms   footprint=3.30 GB
+[延迟 3 篇短文] p50=21.1 ms  p95=23.9 ms
+[HTTP n3 换查询口径] p50=20.7 / 20.8 / 20.5 ms（三遍，n=60）
+
+## 生产别名换为全 FP16 后（单独运行；随后已改回 fp16e）
+[冷加载] 首个请求（含模型加载）1.86 s   footprint=2.32 GB
+[一致性] 与进程内 fp16: 0.00e+00；fp32: 4.04e-04
+[延迟 24 篇] n=96  p50=419.2 ms  p95=437.8 ms  max=443.9 ms   footprint=2.08 GB
+[延迟 3 篇短文] p50=30.9 ms
+[HTTP n3 换查询口径] p50=31.2 / 31.9 / 31.8 ms
+
+## 与 CyberTiel 同驻（A 场景 = OpenClaw 口径 24 篇 × 48 个请求；ABBA 交错；CyberTiel 常驻，footprint 基线 31–33 GB）
+FP32   (bge-reranker-v2-m3-fp32 ) p50 = 443 ms ；无压力/驱逐事件
+FP16   (BGE-Reranker-V2-M3 全FP16) p50 = 491 ms
+FP16   (BGE-Reranker-V2-M3 全FP16) p50 = 490 ms
+FP32   p50 = 446 ms
+FP16E  (bge-reranker-v2-m3-fp16e ) p50 = 453 ms
+FP32   p50 = 447 ms
+FP32   p50 = 454 ms
+FP16E  p50 = 454 ms
+# 汇总：FP32 四次 443/446/447/454（中位≈446.5）；fp16e 453/454（≈453.5，+1.6%，在 FP32 自身波动内）；全 FP16 491/490（≈490.5，+9.9%）
+
+## 与 CyberTiel 同驻的大请求（全 FP16 时测得；激活峰值与权重精度无关）
+A 24 篇×48：footprint 31.00 → 33.00 GB（+2.00）；无压力事件
+B 单请求 64 篇×512 token：2 次 1.75s / 1.73s；footprint 31.00 → 34.00 GB（+3.00）；无压力/驱逐事件
+C 单请求 128 篇×512 token：2 次 3.46s / 3.44s；footprint 31.00 → 37.00 GB（+6.00）；无压力/驱逐事件（当时 final_ceiling≈46 GB）
+
+## 生产别名换为 fp16e 后（单独运行；当前生产状态）
+服务 pid=60782  模型=BGE-Reranker-V2-M3  当前已加载=[]  footprint(加载前)=0.98 GB
+[冷加载] 首个请求（含模型加载）1.93 s   footprint=2.92 GB   已加载=['bge-reranker-v2-m3']
+[一致性] 48 个请求 / 1874 对：与进程内引擎结果的最大|Δp| = fp16e: 0.00e+00；fp32: 2.29e-04
+[延迟 24 篇] n=96  p50=411.7 ms  p95=430.3 ms  max=432.2 ms   footprint=2.82 GB
+[延迟 3 篇短文] p50=20.9 ms  p95=25.0 ms
+[HTTP n3 换查询口径] p50=20.8 / 20.6 / 20.6 ms
+引擎池口径 current_model_memory = 1,829,398,261 B

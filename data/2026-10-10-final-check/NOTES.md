@@ -1,0 +1,4 @@
+# 2026-10-10 re-check after retiring the old embedding model
+
+Protocol: the same chat benchmark as `recipes/bench_chat.py` (3 prompts x 3 rounds, T=0, thinking off, 512 tokens, unique nonce per request, server-side `generation_tokens_per_second`), the HTTP checks used for section 12, and a functional gate. Other clients probed the server during the session (model loads, 8-token health checks), so each window was checked against the server log; contaminated windows are flagged in `cybertiel_dialogue_runs.jsonl` and were not used.
+Files: `cybertiel_dialogue_runs.jsonl` (5 windows, 91.2-98.1 tok/s overall median; 98.5-116 on 2026-10-07), `*_qwen38*`, `*_minicpm*` (48.4 and 179.8 tok/s), `bge_m3_http_check.txt`, `reranker_http_check.txt`, `reranker_transformers_check.txt`, `mlx_microbench.txt`, `functional_gate.txt`, `file_integrity.txt`, `config_drift.txt`.

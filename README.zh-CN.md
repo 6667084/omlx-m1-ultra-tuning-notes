@@ -5,10 +5,12 @@
 > 关键词：oMLX、MLX、Apple Silicon、M1 Ultra、Lightning MTP、投机解码、BF16→FP16、Qwen3.8-27B、
 > CyberTiel-35B-A3B、MiniCPM-V-4.6、Reranker
 >
-> 测试时间：2026-10-06 ~ 10-07（10-07 追加第 10 节：社区热门代码模型候选实测；第 11 节：hot cache 与并发调优）。所有数字都在同一台机器上实测，配置可以直接照抄复现。
+> 测试时间：2026-10-06 ~ 10-07（10-07 追加第 10 节：社区热门代码模型候选实测；第 11 节：hot cache 与并发调优；10-10 追加“补充二”：检索栈重做）。所有数字都在同一台机器上实测，配置可以直接照抄复现。
 > 文中的“社区数据”均注明了来源。
 >
 > **2026-10-07 晚更新：** Qwen3.8 与 MiniCPM-V 已换成去审查版（速度与能力无损），三个日常模型连同确切设置已上传 Hub——见“补充”一节、`config/` 与 `recipes/`。
+>
+> **2026-10-10 更新：** 嵌入模型已更换（Qwen3-Embedding-0.6B 下线 → **BGE-M3 8-bit**），重排器做了无损瘦身；两者都已上传 Hub，并对整套栈做了复检——见“补充二”。
 
 ![test samples](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig7_vision_test_samples.png)
 
@@ -21,8 +23,8 @@
 | **CyberTiel-Coder-35B-A3B**（oQ6e，MoE） | 把 BF16 浮点张量离线转成 **FP16** + **自适应 MTP 深度** | prefill **+28~50%**（16K：1096 → 1644 tok/s），16K 长上下文解码 **+22%**；对话口径 109–116 tok/s；260 题能力集 206 = 206 |
 | **Qwen3.8-27B**（MTPLX Optimized-Speed FP16，4-bit） | **固定 MTP 深度 d2** | 对话口径 47–48 tok/s，较不开 MTP（27.4）**+73%**，较 0.7.0 默认自适应 **+7%** |
 | **MiniCPM-V-4.6-8bit** | 不改，作为专职视觉模型保留 | OCR 与 27B 同为满分，**快 3–4 倍，内存只有约 1/9** |
-| **Qwen3-Embedding-0.6B-8bit** | 不改（已是 FP16 张量） | — |
-| **bge-reranker-v2-m3** | 不改；**客户端分块** | 修复 0.7.0 的 512 token 静默截断：答案在长文中部时，排名从末位回到第一 |
+| **BGE-M3**（10-10 取代 Qwen3-Embedding-0.6B） | **8-bit（gs64）**、上下文上限 2048、`embedding_batch_size` 16；oMLX 0.7.0 上 FP16 权重反而更慢 | 612 MB（上游 2.27 GB）；单条 11.8 ms（FP32 13.1）；对 FP32 余弦 ≥ 0.999（见补充二） |
+| **bge-reranker-v2-m3** | **只把嵌入表存 FP16**（无损，2.27 → 1.74 GB）；**客户端分块** | 延迟与 FP32 持平（+1.6 %）；全 FP16 在大模型常驻时慢 9.9 %；分块让长文 top-1 命中 0.23 → 0.50（见补充二） |
 
 有 10 条经验值得分享，前三条收益最大（第 9 条是选型时最容易踩的坑，第 10 条让 64 GB 机器的长上下文真正可用）：
 
@@ -167,8 +169,8 @@ oMLX 0.7.0 **废弃了 `mtp_num_draft_tokens`**，MTP 深度改由两个新字�
 | Qwen3.8-27B 文本部分 | 0 | 不需要 | 该打包本来就是 FP16 张量（“-FP16”版） |
 | Qwen3.8-27B 视觉塔 | 0.86 GB | 无变化 | 视觉编码不是瓶颈，耗时主要在解码 |
 | MiniCPM-V-4.6-8bit | 1.87 GB | 整体只快约 3%：图像编码 −14%，解码 −2% | 小模型以解码为主；没达到 5% 的上线门槛 |
-| bge-reranker-v2-m3（F32） | 2.12 GB | 速度相同，分数差 < 0.0002，只省 1 GB 内存 | 编码器重排序本身很快 |
-| Qwen3-Embedding-0.6B-8bit | 0 | 不需要 | 已是 FP16 |
+| bge-reranker-v2-m3（F32） | 2.12 GB | 全 FP16：单独运行速度相同，但大模型常驻时慢 9.9 %；只转嵌入表则无代价（见补充二） | 升精度的临时缓冲在大模型常驻时代价被放大 |
+| Qwen3-Embedding-0.6B-8bit | 0 | 不需要 | 已是 FP16（10-10 已下线，见补充二） |
 
 **结论**：收益集中在**大模型 + 长 prompt** 的场景，例如代码 agent 和长文档。
 
@@ -296,6 +298,8 @@ print(len(idx), n)   # 两者必须相等
 
 **对策**：在客户端按段落或约 300 字切块（相邻块留重叠），每篇文档取各块的最高分。在上游修复之前，这是唯一可靠的办法。
 
+**追加（2026-10-10）**：96 组「大海捞针」实测与推荐做法（约 192 token 窗口、不重叠、取最大分；重叠 25 % 无益）见“补充二”的补2.5。
+
 ---
 
 ## 9. 经验八：社区榜单的数字要看语料
@@ -405,7 +409,7 @@ oMLX 0.7.0 的 hot cache（内存缓存层，本机原设 6 GB）存放在 oMLX 
 | Qwen3.8-27B Huihui 去审查 oQ4e + MTP（FP16 张量） | [YCF-AI/Qwen3.8-27B-Huihui-abliterated-oQ4e-MTP-FP16-MLX](https://huggingface.co/YCF-AI/Qwen3.8-27B-Huihui-abliterated-oQ4e-MTP-FP16-MLX) | 手动调用的推理 + 最强视觉 | 48–49 tok/s，视觉 35/35 |
 | MiniCPM-V-4.6 Huihui 去审查 8-bit、downsample 4x | [YCF-AI/MiniCPM-V-4.6-Huihui-abliterated-8bit-MLX](https://huggingface.co/YCF-AI/MiniCPM-V-4.6-Huihui-abliterated-8bit-MLX) | OCR / 图表 | 约 140–180 tok/s，2.3 GB |
 
-Qwen3-Embedding-0.6B-8bit 与 bge-reranker-v2-m3 未做改动，不重复上传：直接用 `mlx-community/Qwen3-Embedding-0.6B-8bit` 与 `BAAI/bge-reranker-v2-m3`（重排前须把长文档切成约 300 字以内的块，见前文 Reranker 一节）。
+嵌入与重排模型后来（2026-10-10）做了改动，也已公开——见下一节“补充二”。（早期版本里用到的 Qwen3-Embedding-0.6B-8bit 已下线；分块建议见第 8 节与补2.5。）
 
 **把审查模型换成去审查版而不牺牲速度与能力。** 门禁：ABBA 对话测速、260 题能力集（McNemar）、35 项视觉 + 大图 OCR、16K 上下文、以及同时检查"史实是否客观陈述"的敏感探针集。
 
@@ -417,6 +421,72 @@ Qwen3-Embedding-0.6B-8bit 与 bge-reranker-v2-m3 未做改动，不重复上传�
 - 同一模型 ID 下换权重，所有客户端配置无需改动，**但必须按 model_name 清理该模型的 SSD KV 缓存**，否则会复用旧权重算出的缓存。
 
 **还原工具包：** [`config/`](config/)（脱敏全局设置、全部逐模型设置、`RESTORE.md`）、[`recipes/`](recipes/)（FP16 转换、MTP 头量化、对话测速、260 题脚本、缓存清理）、原始数据 `data/2026-10-07-uncensor/`。
+
+## 补充二：检索栈重做并公开——BGE-M3 8-bit + 嵌入表无损 FP16 的重排器（2026-10-10）
+
+![本机栈](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig11_local_stack_overview.png)
+
+2026-10-10 重做了本机检索模型并下线旧嵌入模型（Qwen3-Embedding-0.6B）：现在的栈是 CyberTiel、Qwen3.8-27B、MiniCPM-V、**BGE-M3**、**bge-reranker-v2-m3**，仍是五个模型。两个新模型都已上传 Hub，附中英文模型卡、配图、可逐字节复现的转换脚本与 oMLX 设置条目：
+
+| 模型 | 仓库 | 做了什么 | 实测（M1 Ultra 64 GB，oMLX 0.7.0） |
+|---|---|---|---|
+| BAAI/bge-m3（稠密头） | [YCF-AI/bge-m3-8bit-MLX](https://huggingface.co/YCF-AI/bge-m3-8bit-MLX) | `.bin` 不经 torch、不执行 pickle 转 safetensors，**8-bit（gs64）：612 MB（上游 2.27 GB）**，上下文上限 2048，`embedding_batch_size` 16 | 单条 11.8 ms（FP32 13.1），HTTP 20 ms；索引批 13K tok/s；向量对 FP32 余弦 ≥ 0.999 |
+| BAAI/bge-reranker-v2-m3 | [YCF-AI/bge-reranker-v2-m3-fp16emb](https://huggingface.co/YCF-AI/bge-reranker-v2-m3-fp16emb) | **嵌入表存 FP16**（无损，2.27 → 1.74 GB）；客户端分块、请求大小、候选数的用法规则 | 24 篇 412 ms，与 FP32 持平（+1.6 %，在其自身波动内）；排序完全相同 |
+
+用 `recipes/` 里的脚本重建这两个文件，得到的 `model.safetensors` 与已发布的**逐字节一致**（2026-10-10 对照上游 revision 验证）。
+
+### 补2.1 oMLX 0.7.0 上 FP16 权重反而慢——元凶是注意力掩码
+
+![FP16 陷阱](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig13_bgem3_fp16_mask.png)
+
+原生 XLM-R 路径的注意力掩码是 FP32，会把 FP16 激活升成 FP32；而嵌入/重排引擎每个请求后清空 MLX 缓冲池，所以每个请求都要重新为这些临时缓冲付费。BGE-M3 单条：FP32 13.3 ms、**FP16 44.5 ms（×3.3）**、8-bit 12.4 ms。运行时仅把掩码改成 FP16 的对照实验（磁盘上什么都没改）：FP16 降到 11.5 ms，批吞吐比 FP32 高 16 %。这就是上游 PR #4168，含于 v0.7.1.dev1（开发版；稳定版仍是 0.7.0）。稳定版发布之前，这两个模型不要给 oMLX 存成 FP16。
+
+### 补2.2 8-bit 可以、4-bit 不行——以及为什么小规模 MRR 测试不够
+
+![变体](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig12_bgem3_variants.png)
+![质量](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig15_bgem3_retrieval_quality.png)
+
+8-bit（gs64）：体积小 3.7 倍，单条延迟低于 FP32，最小余弦 0.99924，48 条查询 MRR@10 0.589 vs 0.582（配对 bootstrap Δ +0.007，CI [−0.010, +0.032]）。4-bit 的 MRR 一样（0.585），但最小余弦 0.93、top-10 近邻重叠仅 81 %——48 条查询的排序测试看不出来。8-bit 的向量与 FP32 的 BGE-M3 足够接近，我们拿它给托管的 BGE-M3 做本地兜底（请在自己的数据上复核）。
+
+### 补2.3 批大小、上下文上限与内存
+
+![批大小与内存](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig14_bgem3_batch_memory.png)
+
+- `embedding_batch_size` **32 → 16**：索引吞吐 −3～4 %，但索引批在跑时到来的单条查询等待 256 ms（原 467 ms），最坏长文批峰值 +7.9 GB（原 +15.6 GB）。
+- **必须设 `max_context_window`（2048）**：不设时 oMLX 取 `max_position_embeddings` = 8194，越过 8192 个可用位置——不报错、不出 NaN，但向量已不同。注意力是朴素 O(L²)：单条 8192 token 约 14–16 GB。
+- 与 28.5 GB 大模型同驻：索引批 +2.0 GB 无压力事件；最坏情形（24 × 2048 token）+8.0 GB，越过软阈值约 1 秒，无驱逐。
+
+### 补2.4 重排器选哪个精度？必须在大模型常驻下测
+
+![重排器精度](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig16_reranker_precision.png)
+
+上游 FP32 检查点恰好能用 FP16 精确表示（567,755,777 个参数全部），所以磁盘上转换无损。24 篇、CyberTiel 常驻：FP32 446.5 ms，**嵌入表 FP16 453.5 ms（+1.6 %）**，全 FP16 490.5 ms（**+9.9 %**；单独运行只慢 1.5 %）。我们最初仅凭单独运行的数据上线了全 FP16，同驻测试后 15 分钟撤回。量化（8/4-bit）的重排器权重在 0.7.0 上加载失败（严格加载）。纯 `transformers` 加载新文件时按 FP32 读入，分数与原件一致（最大 |Δp| 6e-7）。
+
+### 补2.5 0.7.0 上用好重排器：分块、请求大小、停顿、K、阈值
+
+![长文](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig17_reranker_longdoc.png)
+![请求形状](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig18_reranker_request_shape.png)
+
+- **长文必须分块**（第 8 节的量化版）：96 组「大海捞针」里，截断 512 token 找到答案块的比例 22.9 %；约 192 token 窗口、不重叠、取最大分 → **50.0 %**；所有分块方案都优于截断，彼此无差异，重叠只多花时间。客户端：`recipes/chunked_rerank.py`。
+- **单请求 ≤ 32 篇**（≈ 27 ms/对，线性），**聊天流在跑时 ≤ 16 篇**：重排与 LLM 解码共用一个 MLX 线程，请求多长，流式输出就停多久（8/24/64/128 篇 → 0.18/0.64/1.5/3.0 s；128 篇拆成 16×8 → 最长停顿 0.5 s，总耗时 +19 %）。请求被完全串行化，并行发送只会排队；按长度分桶反而慢 2 %；0.7.0 没有篇数上限（1000 篇 ×512 token 约 +45 GB）。
+- **一阶段 K = 16** 召回 100 %，重排后 MRR 与 K = 24 相同、耗时少 ⅓（48 条技术文档查询，请在自己的语料上复核）。
+- **绝对分数门槛会丢答案**：48 条里有 8 条的金标分 < 0.2，「分数 ≥ 0.2」的过滤会丢掉 17 % 查询的答案。
+
+### 补2.6 上游修复预演（PR #4168）
+
+![预演](https://huggingface.co/datasets/YCF-AI/omlx-m1-ultra-tuning-notes/resolve/main/images/fig19_reranker_4168_preview.png)
+
+在隔离的 oMLX 包副本里应用该 PR（生产应用未动）：全 FP16 成为最快方案——24 篇 414 → 306 ms（−26 %），footprint −40 %，长文可整篇评分（R@1 0.417，截断为 0.229）。全 FP16 在 1874 对里有 1 对越过 0.05 阈值，所以首个稳定版发布后先重做门禁再切换。
+
+### 补2.7 一路上抓到的测量缺陷
+
+- 评测集 chunk id 用文件名，发生重名（315 块里 94 块被遮蔽）；靠「HTTP 与进程内向量一致性校验」才发现，随后所有检索数字都已重算。
+- 基准里自设 `mx.set_cache_limit(4 GB)` 造出了 2.7–2.9 倍的假「断崖」（oMLX 把缓存上限设为整机内存）；直接调用模型类绕过了引擎的逐请求清池，看起来像 33 GB 泄漏。基准请走引擎类或 HTTP，并用生产设置。
+- 单独运行的数字误导过我们一次（全 FP16）；内存类改动的速度门禁必须在大模型常驻下测。
+
+### 补2.8 下线旧嵌入模型后的复检（2026-10-10，`data/2026-10-10-final-check/`）
+
+逐模型 oMLX 设置与「补充」一节发布的完全一致；全局设置只有新的 `embedding_batch_size` 16，以及机主 10-08 调大的 SSD 缓存上限（92 → 185 GB；缓存占用仅约 10 GB，对速度没有影响）。权重与 `config.json` 哈希、index 条目（vision 333、MTP 42/29）、10 项功能门禁（两个大模型的对话/思考/工具调用/视觉；BGE-M3；重排器）全部通过，MiniCPM-V 合成图 OCR 4/4 字段。解码（同一对话口径）：MiniCPM-V 179.8 tok/s（≈ 180），Qwen3.8-27B 48.4（10-07 为 49.2–49.4），BGE-M3 单条 20.8 ms、HTTP 索引批 ≈ 13K tok/s，重排器 24 篇 415.6 ms。**CyberTiel 在五个时间窗里测得 91–98 tok/s（含重启 oMLX 之后），10-07 为 98.5–116**；同时 MLX 微基准正常（≈ 590 GB/s、FP16 18 TFLOPS），Qwen3.8 与基准相差不到 2 %。我们怀疑是后台进程的 CPU 侧抖动先影响最快的解码循环，但没有证实。请把解码速度当作随时段变化的数字，对比配置只在同一时段用 ABBA。
 
 ## 12. 试过但否决的方案
 
@@ -433,6 +503,10 @@ Qwen3-Embedding-0.6B-8bit 与 bge-reranker-v2-m3 未做改动，不重复上传�
 | CyberTiel 上游 09-29 重量化版 | ❌ | 见第 10 节：三项能力测试都在噪声内 |
 | KAT-Coder-V2.5-Dev oQ6e-mtp | ❌（生产口径） | 见第 10 节：关思考 +23 题，开思考 −14 题 |
 | ANE prefill / gs64 Qwen / TurboQuant KV / Burst aggressive | ❌ | 见第 11 节 |
+| BGE-M3 在 oMLX 0.7.0 上存 FP16 | ❌（待上游修复） | 单条慢 ×3.3（FP32 注意力掩码），见补2.1 |
+| BGE-M3 4-bit | ❌ | 48 查询 MRR 不变，但余弦 0.93、top-10 近邻重叠 81 %，见补2.2 |
+| bge-reranker-v2-m3 全 FP16（0.7.0） | ❌ | 大模型常驻时延迟 +9.9 %，见补2.4 |
+| 8/4-bit 量化的重排器权重 | ❌ | 0.7.0 加载失败（严格加载） |
 
 ---
 
@@ -451,14 +525,14 @@ Qwen3-Embedding-0.6B-8bit 与 bge-reranker-v2-m3 未做改动，不重复上传�
   "max_context_window": 131072, "max_tokens": 32768, "ttl_seconds": 600
 },
 "MiniCPM-V-4.6-8bit": { "temperature": 0.0, "top_p": 1.0, "max_context_window": 65536, "ttl_seconds": 600 },
-"Qwen3-Embedding-0.6B-8bit": { "is_pinned": true },
+"bge-m3-8bit": { "max_context_window": 2048, "ttl_seconds": 1800, "model_alias": "BGE-M3" },   // 补充二；旧嵌入模型 Qwen3-Embedding 已于 10-10 下线
 "bge-reranker-v2-m3": { "ttl_seconds": 3600 }
 ```
 
 ```jsonc
 // ~/.omlx/settings.json（节选）
 "memory": { "memory_guard_tier": "balanced", "soft_threshold": 0.85, "hard_threshold": 0.95 }   // 0.85 = 交给档位管理
-"scheduler": { "max_concurrent_requests": 8, "chunked_prefill": true }   // 上游默认值
+"scheduler": { "max_concurrent_requests": 8, "chunked_prefill": true, "embedding_batch_size": 16 }   // 前两项为上游默认值；批大小见补2.3
 "cache": { "hot_cache_max_size": "0" }   // 64 GB 机器上关闭 hot cache，长上下文才进得去（见第 11 节）
 ```
 
@@ -505,6 +579,9 @@ Qwen3-Embedding-0.6B-8bit 与 bge-reranker-v2-m3 未做改动，不重复上传�
 - `data/2026-10-07-candidates/`（第 10 节）：代码 324 题（`q260-code324-*`）、260 题门禁（`q260-g260-*`）、开思考 LiveCodeBench 60（`q260-lcb60think-*`）逐题结果；同时段测速 ABBA：`builtin.jsonl`、`results.jsonl`、`summary.jsonl`。
 - `data/2026-10-07-perf/`（第 11 节）：hot cache 与并发 ABBA（`multiturn.jsonl`、`concurrent.jsonl`），长上下文、ANE、TurboQuant、Burst 测试（`builtin.jsonl`、`summary.jsonl`）。
 - `scripts/to_fp16.py`：离线 BF16→FP16 转换脚本。只改写含 BF16 张量的分片，其余文件用 APFS 克隆。用法：`python to_fp16.py <源模型目录> <输出目录> [--f32]`。
+- `data/2026-10-10-bge-m3/`、`data/2026-10-10-reranker/`（补充二）：只含数值结果、不含评测文本——变体与批/长度/内存扫描、队头阻塞、质量汇总与 bootstrap、各变体重排分数（1874 对）及 PyTorch FP32 参考、长文试验、`http_runs.txt` 终端摘录；`*_ARTIFACT.jsonl` 是已撤回的测量（补2.7）。
+- `data/2026-10-10-final-check/`（补2.8）：下线旧嵌入模型后的复检数据。
+- `recipes/bin2st.py`、`make_bgem3_q8.py`、`make_fp16_embeddings.py`、`chunked_rerank.py`（补充二）：可逐字节复现的转换脚本与重排器分块客户端。
 - 许可：文字、图表与数据采用 CC BY 4.0；脚本采用 MIT。测试图全部为合成数据，不含任何个人信息。
 
 *欢迎拿你的机器复现并回帖交流。M1/M2 用户尤其建议试一下第 4 节的 FP16 转换。*

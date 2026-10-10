@@ -1,0 +1,11 @@
+CyberTiel-Coder-35B-MLX                    config.json sha256 4042ee9152bab8a5…  README前缀 4042ee9152bab8a5 -> 一致
+Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX     config.json sha256 3de5d7c0104181f0…  README前缀 3de5d7c0104181f0 -> 一致
+MiniCPM-V-4.6-8bit                         config.json sha256 3da5a8a803843bac…  README前缀 3da5a8a803843bac -> 一致
+bge-m3-8bit                                config.json sha256 0944653cd4229436…  README前缀 0944653cd4229436 -> 一致
+bge-reranker-v2-m3                         config.json sha256 13dcd6c31d9fec9d…  README前缀 13dcd6c3 -> 一致
+
+CyberTiel-Coder-35B-MLX                    分片 7 | index 条目 2052 | 分片头张量 2052 | index 指向错误 0 | 未入 index 0 | vision 条目 333 | mtp 条目 42
+Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX     分片 4 | index 条目 2209 | 分片头张量 2209 | index 指向错误 0 | 未入 index 0 | vision 条目 333 | mtp 条目 29
+MiniCPM-V-4.6-8bit                         分片 1 | index 条目 971 | 分片头张量 971 | index 指向错误 0 | 未入 index 0 | vision 条目 437 | mtp 条目 0
+bge-m3-8bit                                单文件 | 张量 681 (无 index)
+bge-reranker-v2-m3                         单文件 | 张量 393 (无 index)

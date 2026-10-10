@@ -1,0 +1,7 @@
+# 成因验证（两轮交错；运行时 monkeypatch 仅改 get_extended_attention_mask 的 dtype，磁盘与应用均未改动）
+fp32  stock     | 单条 p50  13.1 ms p95  14.1 | 批32   16110 tok/s 峰值 4.88 GB | 对参考余弦 min 1.000000 mean 1.000000
+fp16  stock     | 单条 p50  44.2 ms p95  46.3 | 批32   15790 tok/s 峰值 3.79 GB | 对参考余弦 min 0.999994 mean 1.000000
+fp16  fp16mask  | 单条 p50  11.5 ms p95  13.4 | 批32   18524 tok/s 峰值 3.26 GB | 对参考余弦 min 0.999978 mean 0.999996
+fp32  stock     | 单条 p50  13.4 ms p95  14.5 | 批32   16180 tok/s 峰值 4.88 GB | 对参考余弦 min 1.000000 mean 1.000000
+fp16  stock     | 单条 p50  43.6 ms p95  46.5 | 批32   15904 tok/s 峰值 3.79 GB | 对参考余弦 min 0.999994 mean 1.000000
+fp16  fp16mask  | 单条 p50  11.6 ms p95  13.9 | 批32   18736 tok/s 峰值 3.26 GB | 对参考余弦 min 0.999978 mean 0.999996

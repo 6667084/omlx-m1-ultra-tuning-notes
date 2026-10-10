@@ -1,0 +1,1 @@
+{"label": "audit-qwen38", "per_prompt_median": {"zh_explain": 42.8, "code": 49.3, "reason": 48.4}, "overall_median": 48.4, "cv_pct": 6.2, "mtp_tok_per_cycle_median": 2.69, "mtp_accept_median": 87.9}

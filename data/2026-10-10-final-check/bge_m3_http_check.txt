@@ -1,0 +1,10 @@
+=== S1 BGE-M3（HTTP，别名 BGE-M3）
+服务进程 RSS（加载前）: 3.92 GB
+[冷加载] 首个请求 0.07 s（含模型加载）  维度 1024  范数 [1.0, 1.0]
+服务进程 RSS（加载后）: 3.92 GB   /health: {"model_count": 5, "loaded_count": 2, "final_ceiling": 41801875782, "current_model_memory": 2472491501}
+[一致性] 48 条查询 HTTP vs 进程内：余弦 min=1.0000000  mean=1.0000000   172 ms / 944 token
+[索引批 #1] 363 条 / 74733 token：5.84 s → 12,804 tok/s  余弦 min=1.0000000
+[索引批 #2] 363 条 / 74733 token：5.73 s → 13,038 tok/s  余弦 min=1.0000000
+[索引批 #3] 363 条 / 74733 token：5.68 s → 13,165 tok/s  余弦 min=1.0000000
+[单条查询] n=96  p50=20.8 ms  p95=28.7 ms  max=29.6 ms
+服务进程 RSS（结束）: 3.93 GB

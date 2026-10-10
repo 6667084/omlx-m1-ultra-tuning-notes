@@ -1,0 +1,1 @@
+{"label": "audit-minicpm", "per_prompt_median": {"zh_explain": 185.9, "code": 180.7, "reason": 178.5}, "overall_median": 179.8, "cv_pct": 3.3, "mtp_tok_per_cycle_median": null, "mtp_accept_median": null}

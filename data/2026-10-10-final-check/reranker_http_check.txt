@@ -1,0 +1,6 @@
+=== S2 Reranker（HTTP，别名 BGE-Reranker-V2-M3）
+服务 pid=60782  模型=BGE-Reranker-V2-M3  当前已加载=[]  footprint(加载前)=1.05 GB
+[冷加载] 首个请求（含模型加载）2.02 s   footprint=2.95 GB   已加载=['bge-reranker-v2-m3']
+[一致性] 48 个请求 / 1874 对：与进程内引擎结果的最大|Δp| = fp32: 2.29e-04；fp16e: 0.00e+00
+[延迟 24 篇] n=48  p50=415.6 ms  p95=432.2 ms  max=433.2 ms   footprint=2.69 GB
+[延迟 3 篇短文] p50=22.2 ms  p95=28.2 ms

@@ -1,0 +1,6 @@
+oMLX settings published 2026-10-07 (config/) vs the running settings on 2026-10-10 (secrets excluded):
+model_settings: CyberTiel-Coder-35B-MLX no difference | MiniCPM-V-4.6-8bit no difference | Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX no difference | bge-reranker-v2-m3 no difference
+                Qwen3-Embedding-0.6B-8bit removed (retired) | bge-m3-8bit added
+settings.json : scheduler.embedding_batch_size 32 -> 16 (our change, section 12.3)
+                cache.ssd_cache_max_size 92GB -> 185GB (raised by the machine's owner on 2026-10-08; cache usage is only ~10 GB, so the cap has no effect on speed)
+                model.model_dirs now also lists a staging folder; network.* shows the local proxy (redacted in the published copy)
